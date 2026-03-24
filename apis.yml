@@ -1,0 +1,7 @@
+aid: varian-medical-systems
+url: https://raw.githubusercontent.com/api-evangelist/varian-medical-systems/refs/heads/main/apis.yml
+modified: '2026-03-24'
+apis: []
+common:
+  - type: Website
+    url: https://www.varian-medical-systems.com
