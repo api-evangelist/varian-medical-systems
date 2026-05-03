@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/varian-medical-systems/main/json-schema/varian-patient-schema.json",
+  "title": "Varian ARIA Patient",
+  "description": "FHIR R4 Patient resource from the Varian ARIA Oncology Information System",
+  "type": "object",
+  "required": ["resourceType", "id"],
+  "properties": {
+    "resourceType": {
+      "type": "string",
+      "const": "Patient",
+      "description": "FHIR resource type"
+    },
+    "id": {
+      "type": "string",
+      "description": "Logical FHIR resource ID"
+    },
+    "meta": {
+      "type": "object",
+      "properties": {
+        "versionId": { "type": "string" },
+        "lastUpdated": { "type": "string", "format": "date-time" }
+      }
+    },
+    "identifier": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "system": { "type": "string", "format": "uri", "description": "Identifier system (e.g., MRN system)" },
+          "value": { "type": "string", "description": "Patient MRN or other identifier" }
+        }
+      },
+      "description": "Patient identifiers including MRN"
+    },
+    "name": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "use": { "type": "string", "enum": ["usual", "official", "temp", "nickname", "anonymous", "old", "maiden"] },
+          "family": { "type": "string", "description": "Last name" },
+          "given": { "type": "array", "items": { "type": "string" }, "description": "First and middle names" }
+        }
+      }
+    },
+    "birthDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date of birth (YYYY-MM-DD)"
+    },
+    "gender": {
+      "type": "string",
+      "enum": ["male", "female", "other", "unknown"],
+      "description": "Administrative gender"
+    },
+    "active": {
+      "type": "boolean",
+      "description": "Whether the patient record is in active use"
+    },
+    "address": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "use": { "type": "string" },
+          "line": { "type": "array", "items": { "type": "string" } },
+          "city": { "type": "string" },
+          "state": { "type": "string" },
+          "postalCode": { "type": "string" },
+          "country": { "type": "string" }
+        }
+      }
+    },
+    "telecom": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "system": { "type": "string", "enum": ["phone", "fax", "email", "pager", "url", "sms", "other"] },
+          "value": { "type": "string" },
+          "use": { "type": "string" }
+        }
+      }
+    }
+  }
+}

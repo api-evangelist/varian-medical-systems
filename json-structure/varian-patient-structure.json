@@ -1,0 +1,16 @@
+{
+  "name": "VarianAriaPatient",
+  "description": "Oncology patient in the Varian ARIA OIS (FHIR R4 Patient resource)",
+  "fields": [
+    { "name": "resourceType", "type": "string", "required": true, "description": "Always 'Patient'" },
+    { "name": "id", "type": "string", "required": true, "description": "FHIR logical ID" },
+    { "name": "identifier", "type": "array<Identifier>", "required": false, "description": "MRN and other patient IDs" },
+    { "name": "name", "type": "array<HumanName>", "required": false, "description": "Patient names" },
+    { "name": "birthDate", "type": "date", "required": false, "description": "Date of birth (YYYY-MM-DD)" },
+    { "name": "gender", "type": "enum", "required": false, "values": ["male", "female", "other", "unknown"], "description": "Administrative gender" },
+    { "name": "active", "type": "boolean", "required": false, "description": "Active record flag" },
+    { "name": "address", "type": "array<Address>", "required": false, "description": "Home and mailing addresses" },
+    { "name": "telecom", "type": "array<ContactPoint>", "required": false, "description": "Phone, email contacts" },
+    { "name": "meta.lastUpdated", "type": "date-time", "required": false, "description": "Last update timestamp" }
+  ]
+}

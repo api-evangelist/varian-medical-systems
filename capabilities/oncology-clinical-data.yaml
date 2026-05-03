@@ -1,0 +1,268 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Varian Oncology Clinical Data"
+  description: >-
+    Unified oncology clinical data workflow combining the Varian ARIA FHIR R4 API.
+    Designed for clinical informaticists, oncology application developers, and
+    EHR integration teams accessing patient-level cancer care data including diagnoses,
+    radiation therapy procedures, observations, care plans, and medications.
+  tags:
+    - Varian
+    - Healthcare
+    - Oncology
+    - FHIR
+    - Radiation Therapy
+    - Clinical Data
+    - Interoperability
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+binds:
+  - namespace: env
+    keys:
+      VARIAN_FHIR_ACCESS_TOKEN: VARIAN_FHIR_ACCESS_TOKEN
+
+capability:
+  consumes:
+    - import: varian-fhir
+      location: ./shared/varian-aria-fhir.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: varian-oncology-api
+      description: "Unified REST API for Varian ARIA oncology clinical data."
+      resources:
+        - path: /v1/patients
+          name: patients
+          description: "Oncology patient demographics"
+          operations:
+            - method: GET
+              name: search-patients
+              description: "Search for oncology patients by name, MRN, or birth date"
+              call: "varian-fhir.search-patients"
+              with:
+                identifier: "rest.identifier"
+                family: "rest.family"
+                _count: "rest._count"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/patients/{id}
+          name: patient-detail
+          description: "Individual patient demographics"
+          operations:
+            - method: GET
+              name: get-patient
+              description: "Get patient by FHIR resource ID"
+              call: "varian-fhir.get-patient"
+              with:
+                id: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/conditions
+          name: conditions
+          description: "Cancer diagnoses and clinical conditions"
+          operations:
+            - method: GET
+              name: search-conditions
+              description: "Search for patient conditions and cancer diagnoses"
+              call: "varian-fhir.search-conditions"
+              with:
+                patient: "rest.patient"
+                code: "rest.code"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/procedures
+          name: procedures
+          description: "Radiation therapy and clinical procedures"
+          operations:
+            - method: GET
+              name: search-procedures
+              description: "Search for procedures including radiation therapy treatments"
+              call: "varian-fhir.search-procedures"
+              with:
+                patient: "rest.patient"
+                date: "rest.date"
+                status: "rest.status"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/observations
+          name: observations
+          description: "Labs, vitals, and clinical measurements"
+          operations:
+            - method: GET
+              name: search-observations
+              description: "Search for clinical observations and lab results"
+              call: "varian-fhir.search-observations"
+              with:
+                patient: "rest.patient"
+                code: "rest.code"
+                category: "rest.category"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/diagnostic-reports
+          name: diagnostic-reports
+          description: "Pathology and imaging reports"
+          operations:
+            - method: GET
+              name: search-diagnostic-reports
+              description: "Search for diagnostic reports including pathology"
+              call: "varian-fhir.search-diagnostic-reports"
+              with:
+                patient: "rest.patient"
+                date: "rest.date"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/care-plans
+          name: care-plans
+          description: "Oncology treatment care plans"
+          operations:
+            - method: GET
+              name: search-care-plans
+              description: "Search for oncology care plans"
+              call: "varian-fhir.search-care-plans"
+              with:
+                patient: "rest.patient"
+                status: "rest.status"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/medications
+          name: medications
+          description: "Chemotherapy and medication orders"
+          operations:
+            - method: GET
+              name: search-medication-requests
+              description: "Search for medication orders including chemotherapy"
+              call: "varian-fhir.search-medication-requests"
+              with:
+                patient: "rest.patient"
+                status: "rest.status"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: varian-oncology-mcp
+      transport: http
+      description: "MCP server for AI-assisted oncology clinical data access from Varian ARIA."
+      tools:
+        - name: search-patients
+          description: "Search for oncology patients in Varian ARIA by name or MRN"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "varian-fhir.search-patients"
+          with:
+            identifier: "tools.identifier"
+            family: "tools.family"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-patient
+          description: "Get detailed demographics for a specific oncology patient"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "varian-fhir.get-patient"
+          with:
+            id: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-cancer-diagnoses
+          description: "Get cancer diagnoses and conditions for an oncology patient"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "varian-fhir.search-conditions"
+          with:
+            patient: "tools.patient"
+            code: "tools.code"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-radiation-procedures
+          description: "Get radiation therapy procedures and treatment history for a patient"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "varian-fhir.search-procedures"
+          with:
+            patient: "tools.patient"
+            date: "tools.date"
+            status: "tools.status"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-lab-results
+          description: "Get laboratory results and clinical observations for a patient"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "varian-fhir.search-observations"
+          with:
+            patient: "tools.patient"
+            code: "tools.code"
+            category: "tools.category"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-pathology-reports
+          description: "Get pathology and diagnostic reports for an oncology patient"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "varian-fhir.search-diagnostic-reports"
+          with:
+            patient: "tools.patient"
+            date: "tools.date"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-treatment-plans
+          description: "Get oncology care plans and treatment plans for a patient"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "varian-fhir.search-care-plans"
+          with:
+            patient: "tools.patient"
+            status: "tools.status"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-chemotherapy-orders
+          description: "Get chemotherapy and medication orders for an oncology patient"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "varian-fhir.search-medication-requests"
+          with:
+            patient: "tools.patient"
+            status: "tools.status"
+          outputParameters:
+            - type: object
+              mapping: "$."

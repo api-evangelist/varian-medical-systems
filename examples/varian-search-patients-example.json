@@ -1,0 +1,61 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://varian.dynamicfhir.com/fhir/varian/basepractice/r4/Patient",
+    "headers": {
+      "Authorization": "Bearer {access_token}",
+      "Accept": "application/fhir+json"
+    },
+    "queryParameters": {
+      "family": "Smith",
+      "_count": 10
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/fhir+json"
+    },
+    "body": {
+      "resourceType": "Bundle",
+      "id": "search-result-001",
+      "type": "searchset",
+      "total": 2,
+      "link": [
+        {
+          "relation": "self",
+          "url": "https://varian.dynamicfhir.com/fhir/varian/basepractice/r4/Patient?family=Smith&_count=10"
+        }
+      ],
+      "entry": [
+        {
+          "fullUrl": "https://varian.dynamicfhir.com/fhir/varian/basepractice/r4/Patient/12345678",
+          "resource": {
+            "resourceType": "Patient",
+            "id": "12345678",
+            "meta": {
+              "versionId": "1",
+              "lastUpdated": "2026-04-15T10:00:00Z"
+            },
+            "identifier": [
+              {
+                "system": "urn:oid:2.16.840.1.113883.3.123",
+                "value": "MRN-001234"
+              }
+            ],
+            "name": [
+              {
+                "use": "official",
+                "family": "Smith",
+                "given": ["John", "William"]
+              }
+            ],
+            "birthDate": "1965-03-15",
+            "gender": "male",
+            "active": true
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,68 @@
+extends: spectral:oas
+rules:
+  varian-operation-summary-title-case:
+    description: All operation summaries must use Title Case
+    severity: warn
+    given: "$.paths[*][*].summary"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z][a-zA-Z0-9 ]*$"
+
+  varian-operation-ids-present:
+    description: All operations must have an operationId
+    severity: error
+    given: "$.paths[*][*]"
+    then:
+      field: operationId
+      function: truthy
+
+  varian-fhir-json-content-type:
+    description: FHIR APIs should use application/fhir+json content type
+    severity: warn
+    given: "$.paths[*][*].responses[*].content"
+    then:
+      function: pattern
+      functionOptions:
+        match: "application/fhir\\+json"
+
+  varian-patient-param-required:
+    description: Patient-scoped resources should require patient parameter
+    severity: warn
+    given: "$.paths[?(!@~property.match('/Patient'))][get].parameters[?(@.name=='patient')]"
+    then:
+      field: required
+      function: truthy
+
+  varian-paths-have-tags:
+    description: All operations should have tags for grouping
+    severity: warn
+    given: "$.paths[*][*]"
+    then:
+      field: tags
+      function: truthy
+
+  varian-id-path-param-required:
+    description: Path ID parameters must be required
+    severity: error
+    given: "$.paths[*][*].parameters[?(@.name=='id' && @.in=='path')]"
+    then:
+      field: required
+      function: truthy
+
+  varian-fhir-bundle-response:
+    description: Search operations should return FHIR Bundle
+    severity: info
+    given: "$.paths[?(!@property.match(/{id}$))][get].responses.200.content.application/fhir+json.schema"
+    then:
+      field: "$ref"
+      function: pattern
+      functionOptions:
+        match: "Bundle"
+
+  varian-smart-on-fhir-security:
+    description: ARIA FHIR API uses SMART on FHIR OAuth2
+    severity: warn
+    given: "$.components.securitySchemes"
+    then:
+      function: defined

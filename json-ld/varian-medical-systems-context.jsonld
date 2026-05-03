@@ -1,0 +1,114 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "schema": "https://schema.org/",
+    "fhir": "http://hl7.org/fhir/",
+    "varian": "https://varian.dynamicfhir.com/fhir/varian/basepractice/r4/",
+
+    "Patient": {
+      "@id": "fhir:Patient",
+      "@type": "@id",
+      "@context": "https://schema.org/Patient"
+    },
+    "Condition": {
+      "@id": "fhir:Condition",
+      "@type": "@id"
+    },
+    "Procedure": {
+      "@id": "fhir:Procedure",
+      "@type": "@id",
+      "@context": "https://schema.org/MedicalProcedure"
+    },
+    "Observation": {
+      "@id": "fhir:Observation",
+      "@type": "@id",
+      "@context": "https://schema.org/MedicalTest"
+    },
+    "DiagnosticReport": {
+      "@id": "fhir:DiagnosticReport",
+      "@type": "@id",
+      "@context": "https://schema.org/MedicalTest"
+    },
+    "CarePlan": {
+      "@id": "fhir:CarePlan",
+      "@type": "@id",
+      "@context": "https://schema.org/MedicalGuideline"
+    },
+    "MedicationRequest": {
+      "@id": "fhir:MedicationRequest",
+      "@type": "@id",
+      "@context": "https://schema.org/PrescribeDrugAction"
+    },
+
+    "resourceType": "fhir:resourceType",
+    "id": "@id",
+    "birthDate": {
+      "@id": "schema:birthDate",
+      "@type": "xsd:date"
+    },
+    "gender": "schema:gender",
+    "active": {
+      "@id": "fhir:active",
+      "@type": "xsd:boolean"
+    },
+    "identifier": {
+      "@id": "fhir:identifier",
+      "@container": "@list"
+    },
+    "name": {
+      "@id": "schema:name",
+      "@container": "@list"
+    },
+    "family": "schema:familyName",
+    "given": "schema:givenName",
+    "address": {
+      "@id": "schema:address",
+      "@type": "schema:PostalAddress"
+    },
+    "city": "schema:addressLocality",
+    "state": "schema:addressRegion",
+    "postalCode": "schema:postalCode",
+    "country": "schema:addressCountry",
+
+    "code": {
+      "@id": "fhir:code",
+      "@type": "@id"
+    },
+    "status": "fhir:status",
+    "subject": {
+      "@id": "fhir:subject",
+      "@type": "@id"
+    },
+    "onsetDateTime": {
+      "@id": "fhir:onset",
+      "@type": "xsd:dateTime"
+    },
+    "performedDateTime": {
+      "@id": "fhir:performed",
+      "@type": "xsd:dateTime"
+    },
+    "effectiveDateTime": {
+      "@id": "fhir:effective",
+      "@type": "xsd:dateTime"
+    },
+    "issued": {
+      "@id": "fhir:issued",
+      "@type": "xsd:dateTime"
+    },
+
+    "category": "fhir:category",
+    "valueQuantity": "fhir:value",
+    "interpretation": "fhir:interpretation",
+    "result": {
+      "@id": "fhir:result",
+      "@container": "@list"
+    },
+    "dosageInstruction": {
+      "@id": "fhir:dosage",
+      "@container": "@list"
+    },
+    "clinicalStatus": "fhir:clinicalStatus",
+    "verificationStatus": "fhir:verificationStatus"
+  }
+}

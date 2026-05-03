@@ -1,0 +1,798 @@
+openapi: 3.1.0
+info:
+  title: Varian ARIA FHIR API
+  description: >-
+    The Varian ARIA FHIR R4 API provides SMART on FHIR access to oncology clinical data
+    from the ARIA Oncology Information System (OIS). Enables EHR systems, clinical applications,
+    and research tools to access patient-level oncology data including conditions, procedures,
+    observations, care plans, medication requests, and diagnostic reports. The API is
+    read-only and supports standard FHIR R4 search operations. Varian is a Siemens
+    Healthineers company.
+  version: 'R4-6.0.101'
+  contact:
+    name: Varian FHIR Developer Portal
+    url: https://varian.dynamicfhir.com
+  termsOfService: https://varian.dynamicfhir.com
+  license:
+    name: Proprietary
+    url: https://www.varian.com
+servers:
+  - url: https://varian.dynamicfhir.com/fhir/varian/basepractice/r4
+    description: Varian ARIA FHIR R4 API Server
+security:
+  - OAuthSMARTonFHIR:
+      - launch/patient
+      - patient/Patient.read
+      - patient/Condition.read
+      - patient/Procedure.read
+      - patient/Observation.read
+paths:
+  /metadata:
+    get:
+      operationId: getCapabilityStatement
+      summary: Get Capability Statement
+      description: >-
+        Returns the FHIR CapabilityStatement describing all supported resources,
+        operations, and search parameters for this ARIA FHIR server.
+      tags:
+        - Metadata
+      security: []
+      responses:
+        '200':
+          description: FHIR CapabilityStatement
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/CapabilityStatement'
+
+  /Patient:
+    get:
+      operationId: searchPatients
+      summary: Search Patients
+      description: Search for patients in the ARIA OIS by name, identifier, birth date, or other criteria.
+      tags:
+        - Patient
+      parameters:
+        - name: _id
+          in: query
+          schema:
+            type: string
+          description: Patient FHIR resource ID
+        - name: identifier
+          in: query
+          schema:
+            type: string
+          description: Patient identifier (e.g., MRN)
+        - name: family
+          in: query
+          schema:
+            type: string
+          description: Patient family (last) name
+        - name: given
+          in: query
+          schema:
+            type: string
+          description: Patient given (first) name
+        - name: birthdate
+          in: query
+          schema:
+            type: string
+            format: date
+          description: Patient birth date (YYYY-MM-DD)
+        - name: _count
+          in: query
+          schema:
+            type: integer
+          description: Maximum number of results to return
+      responses:
+        '200':
+          description: Bundle of Patient resources
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Bundle'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /Patient/{id}:
+    get:
+      operationId: getPatient
+      summary: Get Patient
+      description: Retrieve a specific patient by their FHIR resource ID.
+      tags:
+        - Patient
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: FHIR Patient resource ID
+      responses:
+        '200':
+          description: Patient resource
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Patient'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /Condition:
+    get:
+      operationId: searchConditions
+      summary: Search Conditions
+      description: >-
+        Search for clinical conditions (diagnoses) associated with oncology patients.
+        Returns ICD-10 coded conditions including cancer diagnoses.
+      tags:
+        - Condition
+      parameters:
+        - name: patient
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Patient reference (e.g., Patient/12345678)
+        - name: code
+          in: query
+          schema:
+            type: string
+          description: Condition code (ICD-10, SNOMED CT)
+        - name: category
+          in: query
+          schema:
+            type: string
+          description: Condition category
+        - name: _count
+          in: query
+          schema:
+            type: integer
+          description: Maximum number of results
+      responses:
+        '200':
+          description: Bundle of Condition resources
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Bundle'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /Condition/{id}:
+    get:
+      operationId: getCondition
+      summary: Get Condition
+      description: Retrieve a specific condition resource by ID.
+      tags:
+        - Condition
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Condition resource
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/FHIRResource'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /Procedure:
+    get:
+      operationId: searchProcedures
+      summary: Search Procedures
+      description: >-
+        Search for procedures performed on oncology patients, including radiation
+        therapy treatments, surgical procedures, and other clinical interventions.
+      tags:
+        - Procedure
+      parameters:
+        - name: patient
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Patient reference
+        - name: code
+          in: query
+          schema:
+            type: string
+          description: Procedure code (CPT, SNOMED CT)
+        - name: date
+          in: query
+          schema:
+            type: string
+          description: Procedure date (YYYY-MM-DD or date range)
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum:
+              - preparation
+              - in-progress
+              - not-done
+              - on-hold
+              - stopped
+              - completed
+              - entered-in-error
+              - unknown
+          description: Procedure status
+        - name: _count
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Bundle of Procedure resources
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Bundle'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /Procedure/{id}:
+    get:
+      operationId: getProcedure
+      summary: Get Procedure
+      description: Retrieve a specific procedure by ID.
+      tags:
+        - Procedure
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Procedure resource
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/FHIRResource'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /Observation:
+    get:
+      operationId: searchObservations
+      summary: Search Observations
+      description: >-
+        Search for clinical observations including lab results, vital signs, and
+        treatment-related measurements for oncology patients.
+      tags:
+        - Observation
+      parameters:
+        - name: patient
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Patient reference
+        - name: code
+          in: query
+          schema:
+            type: string
+          description: Observation LOINC or SNOMED code
+        - name: date
+          in: query
+          schema:
+            type: string
+          description: Observation date
+        - name: category
+          in: query
+          schema:
+            type: string
+          description: Observation category (laboratory, vital-signs, etc.)
+        - name: _count
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Bundle of Observation resources
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Bundle'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /Observation/{id}:
+    get:
+      operationId: getObservation
+      summary: Get Observation
+      description: Retrieve a specific observation by ID.
+      tags:
+        - Observation
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Observation resource
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/FHIRResource'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /DiagnosticReport:
+    get:
+      operationId: searchDiagnosticReports
+      summary: Search Diagnostic Reports
+      description: >-
+        Search for diagnostic reports associated with oncology patients, including
+        pathology reports, imaging reports, and treatment summaries.
+      tags:
+        - DiagnosticReport
+      parameters:
+        - name: patient
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Patient reference
+        - name: code
+          in: query
+          schema:
+            type: string
+          description: Report type code
+        - name: date
+          in: query
+          schema:
+            type: string
+          description: Report date
+        - name: status
+          in: query
+          schema:
+            type: string
+          description: Report status
+        - name: _count
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Bundle of DiagnosticReport resources
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Bundle'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /DiagnosticReport/{id}:
+    get:
+      operationId: getDiagnosticReport
+      summary: Get Diagnostic Report
+      description: Retrieve a specific diagnostic report by ID.
+      tags:
+        - DiagnosticReport
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: DiagnosticReport resource
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/FHIRResource'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /CarePlan:
+    get:
+      operationId: searchCarePlans
+      summary: Search Care Plans
+      description: >-
+        Search for care plans for oncology patients, including radiation therapy
+        treatment plans and overall cancer care plans.
+      tags:
+        - CarePlan
+      parameters:
+        - name: patient
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Patient reference
+        - name: status
+          in: query
+          schema:
+            type: string
+          description: Care plan status (active, completed, etc.)
+        - name: _count
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Bundle of CarePlan resources
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Bundle'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /MedicationRequest:
+    get:
+      operationId: searchMedicationRequests
+      summary: Search Medication Requests
+      description: >-
+        Search for medication requests (prescriptions) for oncology patients including
+        chemotherapy orders and supportive care medications.
+      tags:
+        - MedicationRequest
+      parameters:
+        - name: patient
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Patient reference
+        - name: status
+          in: query
+          schema:
+            type: string
+          description: Medication request status
+        - name: _count
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Bundle of MedicationRequest resources
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Bundle'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /AllergyIntolerance:
+    get:
+      operationId: searchAllergyIntolerances
+      summary: Search Allergy Intolerances
+      description: Search for allergy and intolerance records for oncology patients.
+      tags:
+        - AllergyIntolerance
+      parameters:
+        - name: patient
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Patient reference
+        - name: _count
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Bundle of AllergyIntolerance resources
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Bundle'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /DocumentReference:
+    get:
+      operationId: searchDocumentReferences
+      summary: Search Document References
+      description: >-
+        Search for clinical document references including treatment summaries, consent
+        forms, and clinical notes for oncology patients.
+      tags:
+        - DocumentReference
+      parameters:
+        - name: patient
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Patient reference
+        - name: type
+          in: query
+          schema:
+            type: string
+          description: Document type code (LOINC)
+        - name: _count
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Bundle of DocumentReference resources
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Bundle'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /Goal:
+    get:
+      operationId: searchGoals
+      summary: Search Goals
+      description: Search for treatment goals for oncology patients.
+      tags:
+        - Goal
+      parameters:
+        - name: patient
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Patient reference
+        - name: lifecycle-status
+          in: query
+          schema:
+            type: string
+          description: Goal lifecycle status
+        - name: _count
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Bundle of Goal resources
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Bundle'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+components:
+  securitySchemes:
+    OAuthSMARTonFHIR:
+      type: oauth2
+      description: SMART on FHIR OAuth 2.0 authorization
+      flows:
+        authorizationCode:
+          authorizationUrl: https://varian-smart.dynamicfhir.com/core/connect/authorize
+          tokenUrl: https://varian-smart.dynamicfhir.com/core/connect/token
+          scopes:
+            launch/patient: Patient context launch
+            patient/Patient.read: Read patient demographics
+            patient/Condition.read: Read patient conditions/diagnoses
+            patient/Procedure.read: Read patient procedures
+            patient/Observation.read: Read patient observations/labs
+            patient/DiagnosticReport.read: Read diagnostic reports
+            patient/CarePlan.read: Read care plans
+            patient/MedicationRequest.read: Read medication requests
+            patient/AllergyIntolerance.read: Read allergy records
+            patient/DocumentReference.read: Read document references
+            patient/Goal.read: Read treatment goals
+  responses:
+    Unauthorized:
+      description: Unauthorized — missing or invalid SMART on FHIR token
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+    NotFound:
+      description: Resource not found
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+  schemas:
+    FHIRResource:
+      type: object
+      description: Generic FHIR R4 resource
+      properties:
+        resourceType:
+          type: string
+          description: FHIR resource type
+        id:
+          type: string
+          description: Logical resource ID
+        meta:
+          type: object
+          properties:
+            versionId:
+              type: string
+            lastUpdated:
+              type: string
+              format: date-time
+        text:
+          type: object
+          description: Human-readable narrative
+      additionalProperties: true
+
+    Bundle:
+      type: object
+      description: FHIR Bundle containing search results
+      properties:
+        resourceType:
+          type: string
+          enum:
+            - Bundle
+        id:
+          type: string
+        meta:
+          type: object
+        type:
+          type: string
+          enum:
+            - searchset
+            - collection
+        total:
+          type: integer
+          description: Total number of matching resources
+        link:
+          type: array
+          items:
+            type: object
+            properties:
+              relation:
+                type: string
+              url:
+                type: string
+                format: uri
+        entry:
+          type: array
+          items:
+            type: object
+            properties:
+              fullUrl:
+                type: string
+                format: uri
+              resource:
+                $ref: '#/components/schemas/FHIRResource'
+              search:
+                type: object
+                properties:
+                  mode:
+                    type: string
+
+    Patient:
+      allOf:
+        - $ref: '#/components/schemas/FHIRResource'
+      description: FHIR R4 Patient resource for oncology patients
+      properties:
+        resourceType:
+          type: string
+          enum:
+            - Patient
+        identifier:
+          type: array
+          items:
+            type: object
+            properties:
+              system:
+                type: string
+              value:
+                type: string
+        name:
+          type: array
+          items:
+            type: object
+            properties:
+              use:
+                type: string
+              family:
+                type: string
+              given:
+                type: array
+                items:
+                  type: string
+        birthDate:
+          type: string
+          format: date
+        gender:
+          type: string
+          enum:
+            - male
+            - female
+            - other
+            - unknown
+        address:
+          type: array
+          items:
+            type: object
+
+    CapabilityStatement:
+      allOf:
+        - $ref: '#/components/schemas/FHIRResource'
+      description: FHIR CapabilityStatement describing server capabilities
+      properties:
+        resourceType:
+          type: string
+          enum:
+            - CapabilityStatement
+        status:
+          type: string
+        date:
+          type: string
+          format: date-time
+        kind:
+          type: string
+          enum:
+            - instance
+        fhirVersion:
+          type: string
+        rest:
+          type: array
+          items:
+            type: object
+
+    OperationOutcome:
+      type: object
+      description: FHIR OperationOutcome for errors
+      properties:
+        resourceType:
+          type: string
+          enum:
+            - OperationOutcome
+        issue:
+          type: array
+          items:
+            type: object
+            properties:
+              severity:
+                type: string
+                enum:
+                  - fatal
+                  - error
+                  - warning
+                  - information
+              code:
+                type: string
+              details:
+                type: object
+              diagnostics:
+                type: string
+
+tags:
+  - name: Metadata
+    description: FHIR server capability and metadata
+  - name: Patient
+    description: Oncology patient demographics and identifiers
+  - name: Condition
+    description: Cancer diagnoses and clinical conditions
+  - name: Procedure
+    description: Radiation therapy and other clinical procedures
+  - name: Observation
+    description: Labs, vitals, and clinical measurements
+  - name: DiagnosticReport
+    description: Pathology, imaging, and treatment reports
+  - name: CarePlan
+    description: Oncology treatment and care plans
+  - name: MedicationRequest
+    description: Chemotherapy and medication prescriptions
+  - name: AllergyIntolerance
+    description: Patient allergy and intolerance records
+  - name: DocumentReference
+    description: Clinical document management
+  - name: Goal
+    description: Treatment goals and objectives

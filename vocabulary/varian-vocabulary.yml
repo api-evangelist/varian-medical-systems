@@ -1,0 +1,184 @@
+vocabulary:
+  name: Varian Medical Systems Oncology Vocabulary
+  description: >-
+    Domain vocabulary for the Varian Medical Systems ARIA Oncology Information System
+    and associated FHIR APIs. Covers radiation oncology clinical concepts, FHIR interoperability
+    standards, and oncology workflow terminology.
+  version: "2026-05"
+  domain: Oncology Healthcare IT
+  tags:
+    - Healthcare
+    - Oncology
+    - FHIR
+    - Radiation Therapy
+    - Medical Devices
+
+terms:
+  - term: ARIA
+    definition: >-
+      Varian's Oncology Information System (OIS) — a comprehensive clinical software
+      platform for managing the entire radiation oncology workflow including patient
+      scheduling, treatment planning, treatment delivery, and clinical documentation.
+    related:
+      - OIS
+      - Varian
+
+  - term: OIS
+    definition: >-
+      Oncology Information System — software that manages patient data, treatment
+      planning, scheduling, and clinical workflow in a radiation oncology department.
+      Varian's ARIA OIS is the market-leading system.
+    abbreviation: Oncology Information System
+
+  - term: FHIR
+    definition: >-
+      Fast Healthcare Interoperability Resources — the HL7 standard for exchanging
+      healthcare information electronically. Varian's ARIA FHIR R4 API uses SMART on
+      FHIR for secure, patient-consented access to oncology clinical data.
+    abbreviation: Fast Healthcare Interoperability Resources
+    related:
+      - SMART on FHIR
+      - HL7
+
+  - term: SMART on FHIR
+    definition: >-
+      Substitutable Medical Applications and Reusable Technologies — a framework
+      that defines how healthcare applications can securely connect to FHIR APIs
+      using OAuth 2.0 authorization. Varian's ARIA FHIR API requires SMART on FHIR
+      authorization for patient data access.
+    related:
+      - FHIR
+      - OAuth 2.0
+
+  - term: Radiation Therapy
+    definition: >-
+      The use of ionizing radiation (X-rays, gamma rays, protons) to treat cancer.
+      Varian manufactures linear accelerators (LINACs) and treatment planning software
+      to deliver precise radiation doses to tumors while minimizing damage to healthy tissue.
+    related:
+      - LINAC
+      - Treatment Plan
+      - Radiotherapy
+
+  - term: LINAC
+    definition: >-
+      Linear Accelerator — a device that uses electromagnetic waves to accelerate
+      electrons to near-light speed, creating high-energy X-rays for cancer treatment.
+      Varian manufactures TrueBeam and other LINAC systems.
+    abbreviation: Linear Accelerator
+
+  - term: Treatment Plan
+    definition: >-
+      A detailed specification of how radiation therapy will be delivered to a patient,
+      including beam angles, dose distributions, and fractionation schedules. Varian's
+      Eclipse software generates treatment plans that are managed in ARIA.
+    related:
+      - ARIA
+      - Eclipse
+      - Fractionation
+
+  - term: Fractionation
+    definition: >-
+      The division of the total radiation dose into smaller individual doses (fractions)
+      delivered over multiple sessions. Common schedules include conventional fractionation
+      (small daily doses) and stereotactic body radiotherapy (SBRT, large doses in few sessions).
+    related:
+      - Radiation Therapy
+      - SBRT
+
+  - term: DICOM
+    definition: >-
+      Digital Imaging and Communications in Medicine — the international standard for
+      medical imaging data. Varian systems use DICOM RT (RadioTherapy) extensions
+      for treatment plan data, dose files, and structure sets.
+    abbreviation: Digital Imaging and Communications in Medicine
+    related:
+      - DICOM RT
+
+  - term: DICOM RT
+    definition: >-
+      DICOM Radiotherapy — a set of DICOM extensions for radiation oncology data
+      including RT Plan, RT Dose, RT Structure Set, RT Image, and RT Treatment Record.
+      Enables interoperability between Varian systems and other oncology software.
+    related:
+      - DICOM
+
+  - term: HL7
+    definition: >-
+      Health Level Seven — an international standards organization producing standards
+      for healthcare data exchange. HL7 v2.x messages are used by ARIA for ADT
+      (Admit/Discharge/Transfer) and scheduling integration with hospital systems.
+    abbreviation: Health Level Seven
+
+  - term: mCODE
+    definition: >-
+      Minimal Common Oncology Data Elements — an HL7 FHIR implementation guide that
+      standardizes oncology data for research and quality measurement. Varian supports
+      mCODE profiles for cancer conditions, staging, and radiation therapy summaries.
+    abbreviation: Minimal Common Oncology Data Elements
+
+  - term: XRTS
+    definition: >-
+      Cross-Vendor RT Summary — a FHIR implementation guide for standardized radiation
+      therapy treatment summaries. Enables cross-institutional sharing of radiation
+      therapy history for patients treated at multiple centers.
+    abbreviation: Cross-Vendor Radiation Therapy Summary
+
+  - term: Eclipse
+    definition: >-
+      Varian's radiation treatment planning system. Eclipse generates optimized treatment
+      plans based on patient CT images, target volumes, and dose objectives. Integrates
+      with ARIA for plan management and delivery.
+    related:
+      - ARIA
+      - Treatment Plan
+
+  - term: TrueBeam
+    definition: >-
+      Varian's flagship linear accelerator system for radiation therapy delivery. TrueBeam
+      supports IMRT, VMAT, SBRT, and SRS treatment techniques with real-time imaging.
+    related:
+      - LINAC
+
+  - term: IMRT
+    definition: >-
+      Intensity-Modulated Radiation Therapy — an advanced radiation technique that
+      modulates the intensity of radiation beams to conform dose to tumor shape while
+      sparing adjacent normal tissue.
+    abbreviation: Intensity-Modulated Radiation Therapy
+
+  - term: VMAT
+    definition: >-
+      Volumetric Modulated Arc Therapy — a rotational IMRT technique where the machine
+      rotates around the patient while continuously delivering radiation. Enables fast,
+      highly conformal treatments.
+    abbreviation: Volumetric Modulated Arc Therapy
+
+  - term: SBRT
+    definition: >-
+      Stereotactic Body Radiation Therapy — a technique delivering very high doses of
+      precisely targeted radiation in a small number of fractions (typically 1-5).
+      Used for lung, liver, spine, and prostate tumors.
+    abbreviation: Stereotactic Body Radiation Therapy
+
+  - term: SRS
+    definition: >-
+      Stereotactic Radiosurgery — high-dose, single-session radiation treatment for
+      brain tumors and other intracranial targets, using multiple beams focused on a
+      small target.
+    abbreviation: Stereotactic Radiosurgery
+
+  - term: Patient Portal
+    definition: >-
+      A web or mobile application allowing oncology patients to view their treatment
+      schedule, test results, and clinical notes. Varian integrates with SMART on
+      FHIR to enable third-party patient portal applications.
+
+  - term: ConnectEHR
+    definition: >-
+      Varian's FHIR integration framework enabling the ARIA FHIR API. ConnectEHR
+      version FHIR4-B supports the Dynamic FHIR Server used for SMART on FHIR
+      application development.
+    related:
+      - ARIA
+      - FHIR

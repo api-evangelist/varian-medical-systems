@@ -1,0 +1,78 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://varian.dynamicfhir.com/fhir/varian/basepractice/r4/Condition",
+    "headers": {
+      "Authorization": "Bearer {access_token}",
+      "Accept": "application/fhir+json"
+    },
+    "queryParameters": {
+      "patient": "Patient/12345678",
+      "_count": 10
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/fhir+json"
+    },
+    "body": {
+      "resourceType": "Bundle",
+      "id": "conditions-result-001",
+      "type": "searchset",
+      "total": 1,
+      "entry": [
+        {
+          "fullUrl": "https://varian.dynamicfhir.com/fhir/varian/basepractice/r4/Condition/cond-001",
+          "resource": {
+            "resourceType": "Condition",
+            "id": "cond-001",
+            "clinicalStatus": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+                  "code": "active",
+                  "display": "Active"
+                }
+              ]
+            },
+            "verificationStatus": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+                  "code": "confirmed",
+                  "display": "Confirmed"
+                }
+              ]
+            },
+            "category": [
+              {
+                "coding": [
+                  {
+                    "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                    "code": "problem-list-item",
+                    "display": "Problem List Item"
+                  }
+                ]
+              }
+            ],
+            "code": {
+              "coding": [
+                {
+                  "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                  "code": "C34.10",
+                  "display": "Malignant neoplasm of upper lobe, bronchus or lung, unspecified side"
+                }
+              ],
+              "text": "Lung Cancer, Stage IIIA"
+            },
+            "subject": {
+              "reference": "Patient/12345678"
+            },
+            "onsetDateTime": "2025-11-10"
+          }
+        }
+      ]
+    }
+  }
+}
