@@ -4,92 +4,29 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Varian Medical Systems
 providerId: varian-medical-systems
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
   - Healthcare
   - Oncology
   - Medical Devices
-  - FHIR
-  - Radiation Therapy
-  - Health IT
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Varian Medical Systems API surface. Captures
-  per-tier quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values
-  to be replaced with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+description: Varian does not publish public API rate limits. Throughput and concurrency are governed by the Developer Program agreement and the on-premises Aria/Eclipse deployment characteristics at the customer site.
+sources:
+  - https://cancercare.siemens-healthineers.com/
+notes: No public rate-limit documentation. Limits are governed by site-specific deployment characteristics and the Developer Program contract; consumers must obtain operational specifics from the customer's Varian contact.
 responseCodes:
   throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - ARIA FHIR API
-      - ARIA Access API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - ARIA FHIR API
-      - ARIA Access API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - ARIA FHIR API
-      - ARIA Access API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - ARIA FHIR API
-      - ARIA Access API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - ARIA FHIR API
-      - ARIA Access API
+  - name: Customer-Site / Partner-Contracted Limit
+    scope: account
+    metric: varies
+    limit: see customer/site agreement
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  - name: Site-Specific Deployment
+    description: Varian Aria/Eclipse APIs run inside customer hospital networks; throughput depends on the on-prem hardware and the integration partner agreement, not a SaaS rate limit.
+  - name: Developer Program Governs
+    description: Operational guarantees, error handling expectations, and supported call patterns are defined in the Varian Developer Program documentation provided to approved partners.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
