@@ -1,0 +1,91 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Varian ARIA FHIR API — CarePlan
+  description: 'Varian ARIA FHIR API — CarePlan. 1 operations. Lead operation: Search Care Plans. Self-contained Naftiko capability
+    covering one Varian Medical Systems business surface.'
+  tags:
+  - Varian Medical Systems
+  - CarePlan
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    VARIAN_MEDICAL_SYSTEMS_API_KEY: VARIAN_MEDICAL_SYSTEMS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: varian-aria-fhir-careplan
+    baseUri: https://varian.dynamicfhir.com/fhir/varian/basepractice/r4
+    description: Varian ARIA FHIR API — CarePlan business capability. Self-contained, no shared references.
+    resources:
+    - name: CarePlan
+      path: /CarePlan
+      operations:
+      - name: searchcareplans
+        method: GET
+        description: Search Care Plans
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: patient
+          in: query
+          type: string
+          description: Patient reference
+          required: true
+        - name: status
+          in: query
+          type: string
+          description: Care plan status (active, completed, etc.)
+        - name: _count
+          in: query
+          type: integer
+    authentication:
+      type: bearer
+      token: '{{env.VARIAN_MEDICAL_SYSTEMS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: varian-aria-fhir-careplan-rest
+    port: 8080
+    description: REST adapter for Varian ARIA FHIR API — CarePlan. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/careplan
+      name: careplan
+      description: REST surface for CarePlan.
+      operations:
+      - method: GET
+        name: searchcareplans
+        description: Search Care Plans
+        call: varian-aria-fhir-careplan.searchcareplans
+        with:
+          patient: rest.patient
+          status: rest.status
+          _count: rest._count
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: varian-aria-fhir-careplan-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Varian ARIA FHIR API — CarePlan. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: search-care-plans
+      description: Search Care Plans
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: varian-aria-fhir-careplan.searchcareplans
+      with:
+        patient: tools.patient
+        status: tools.status
+        _count: tools._count
+      outputParameters:
+      - type: object
+        mapping: $.

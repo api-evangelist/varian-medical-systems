@@ -1,0 +1,144 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Varian ARIA FHIR API — DiagnosticReport
+  description: 'Varian ARIA FHIR API — DiagnosticReport. 2 operations. Lead operation: Search Diagnostic Reports. Self-contained
+    Naftiko capability covering one Varian Medical Systems business surface.'
+  tags:
+  - Varian Medical Systems
+  - DiagnosticReport
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    VARIAN_MEDICAL_SYSTEMS_API_KEY: VARIAN_MEDICAL_SYSTEMS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: varian-aria-fhir-diagnosticreport
+    baseUri: https://varian.dynamicfhir.com/fhir/varian/basepractice/r4
+    description: Varian ARIA FHIR API — DiagnosticReport business capability. Self-contained, no shared references.
+    resources:
+    - name: DiagnosticReport
+      path: /DiagnosticReport
+      operations:
+      - name: searchdiagnosticreports
+        method: GET
+        description: Search Diagnostic Reports
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: patient
+          in: query
+          type: string
+          description: Patient reference
+          required: true
+        - name: code
+          in: query
+          type: string
+          description: Report type code
+        - name: date
+          in: query
+          type: string
+          description: Report date
+        - name: status
+          in: query
+          type: string
+          description: Report status
+        - name: _count
+          in: query
+          type: integer
+    - name: DiagnosticReport-id
+      path: /DiagnosticReport/{id}
+      operations:
+      - name: getdiagnosticreport
+        method: GET
+        description: Get Diagnostic Report
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.VARIAN_MEDICAL_SYSTEMS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: varian-aria-fhir-diagnosticreport-rest
+    port: 8080
+    description: REST adapter for Varian ARIA FHIR API — DiagnosticReport. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/diagnosticreport
+      name: diagnosticreport
+      description: REST surface for DiagnosticReport.
+      operations:
+      - method: GET
+        name: searchdiagnosticreports
+        description: Search Diagnostic Reports
+        call: varian-aria-fhir-diagnosticreport.searchdiagnosticreports
+        with:
+          patient: rest.patient
+          code: rest.code
+          date: rest.date
+          status: rest.status
+          _count: rest._count
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/diagnosticreport/{id}
+      name: diagnosticreport-id
+      description: REST surface for DiagnosticReport-id.
+      operations:
+      - method: GET
+        name: getdiagnosticreport
+        description: Get Diagnostic Report
+        call: varian-aria-fhir-diagnosticreport.getdiagnosticreport
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: varian-aria-fhir-diagnosticreport-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Varian ARIA FHIR API — DiagnosticReport. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: search-diagnostic-reports
+      description: Search Diagnostic Reports
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: varian-aria-fhir-diagnosticreport.searchdiagnosticreports
+      with:
+        patient: tools.patient
+        code: tools.code
+        date: tools.date
+        status: tools.status
+        _count: tools._count
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-diagnostic-report
+      description: Get Diagnostic Report
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: varian-aria-fhir-diagnosticreport.getdiagnosticreport
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
