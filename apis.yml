@@ -8,15 +8,17 @@ tags:
   - FHIR
   - Radiation Therapy
   - Health IT
+  - Fortune 1000
 kind: company
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 created: '2026-05-03'
 modified: '2026-05-19'
-description: Varian Medical Systems is a leading manufacturer of medical devices and software for treating cancer with radiotherapy,
-  radiosurgery, proton therapy, and brachytherapy. Acquired by Siemens Healthineers in 2021, Varian provides the ARIA Oncology
-  Information System (OIS) and developer APIs enabling integration with clinical workflows, EHR systems, and the broader healthcare
-  ecosystem using HL7, DICOM, and FHIR standards.
+description: >-
+  Varian Medical Systems is a leading manufacturer of medical devices and software for treating cancer with
+  radiotherapy, radiosurgery, proton therapy, and brachytherapy. Acquired by Siemens Healthineers in 2021, Varian
+  provides the ARIA Oncology Information System (OIS) and developer APIs enabling integration with clinical workflows,
+  EHR systems, and the broader healthcare ecosystem using HL7, DICOM, and FHIR standards.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
@@ -25,61 +27,42 @@ apis:
   - aid: varian-medical-systems:aria-fhir-api
     name: ARIA FHIR API
     tags:
-    - Healthcare
-    - Oncology
-    - FHIR
-    - Health IT
-    - Interoperability
+      - Healthcare
+      - Oncology
+      - FHIR
+      - Health IT
+      - Interoperability
     humanURL: https://varian.dynamicfhir.com/varian/basepractice/r4/Home/ApiDocumentation
     baseURL: https://varian.dynamicfhir.com/fhir/varian/basepractice/r4
     properties:
-    - url: https://varian.dynamicfhir.com/varian/basepractice/r4/Home/ApiDocumentation
-      type: Documentation
-    - url: https://varian.dynamicfhir.com/fhir/varian/basepractice/r4/metadata
-      type: CapabilityStatement
-    - url: https://raw.githubusercontent.com/api-evangelist/varian-medical-systems/refs/heads/main/openapi/varian-aria-fhir-openapi.yml
-      type: OpenAPI
-    - type: NaftikoCapability
-      url: capabilities/varian-aria-fhir-allergyintolerance.yaml
-    - type: NaftikoCapability
-      url: capabilities/varian-aria-fhir-careplan.yaml
-    - type: NaftikoCapability
-      url: capabilities/varian-aria-fhir-condition.yaml
-    - type: NaftikoCapability
-      url: capabilities/varian-aria-fhir-diagnosticreport.yaml
-    - type: NaftikoCapability
-      url: capabilities/varian-aria-fhir-documentreference.yaml
-    - type: NaftikoCapability
-      url: capabilities/varian-aria-fhir-goal.yaml
-    - type: NaftikoCapability
-      url: capabilities/varian-aria-fhir-medicationrequest.yaml
-    - type: NaftikoCapability
-      url: capabilities/varian-aria-fhir-metadata.yaml
-    - type: NaftikoCapability
-      url: capabilities/varian-aria-fhir-observation.yaml
-    - type: NaftikoCapability
-      url: capabilities/varian-aria-fhir-patient.yaml
-    - type: NaftikoCapability
-      url: capabilities/varian-aria-fhir-procedure.yaml
-    description: The Varian ARIA FHIR R4 API provides SMART on FHIR access to oncology clinical data from the ARIA Oncology
-      Information System. Supports read and search operations for Patient, Condition, Procedure, Observation, DiagnosticReport,
-      CarePlan, MedicationRequest, and other clinical resources relevant to cancer care.
+      - url: https://varian.dynamicfhir.com/varian/basepractice/r4/Home/ApiDocumentation
+        type: Documentation
+      - url: https://varian.dynamicfhir.com/fhir/varian/basepractice/r4/metadata
+        type: CapabilityStatement
+      - url: >-
+          https://raw.githubusercontent.com/api-evangelist/varian-medical-systems/refs/heads/main/openapi/varian-aria-fhir-openapi.yml
+        type: OpenAPI
+    description: >-
+      The Varian ARIA FHIR R4 API provides SMART on FHIR access to oncology clinical data from the ARIA Oncology
+      Information System. Supports read and search operations for Patient, Condition, Procedure, Observation,
+      DiagnosticReport, CarePlan, MedicationRequest, and other clinical resources relevant to cancer care.
   - aid: varian-medical-systems:aria-access-api
     name: ARIA Access API
     tags:
-    - Healthcare
-    - Oncology
-    - SOAP
-    - Web Services
-    - Health IT
+      - Healthcare
+      - Oncology
+      - SOAP
+      - Web Services
+      - Health IT
     humanURL: https://www.gatewayscripts.com/post/webinars-revisited-a-review-of-aria-apis
     baseURL: https://localhost:55051/Gateway/Service.svc
     properties:
-    - url: https://www.gatewayscripts.com/post/webinars-revisited-a-review-of-aria-apis
-      type: Documentation
-    description: The legacy ARIA Access API provides SOAP and REST access to core ARIA entities including patients, appointments,
-      prescriptions, treatment plans, orders, and administrative data. Deployed on-premise within the healthcare institution's
-      infrastructure.
+      - url: https://www.gatewayscripts.com/post/webinars-revisited-a-review-of-aria-apis
+        type: Documentation
+    description: >-
+      The legacy ARIA Access API provides SOAP and REST access to core ARIA entities including patients, appointments,
+      prescriptions, treatment plans, orders, and administrative data. Deployed on-premise within the healthcare
+      institution's infrastructure.
 common:
   - type: LinkedIn
     url: https://www.linkedin.com/company/varian-medical-systems
@@ -96,7 +79,8 @@ common:
     url: https://www.gatewayscripts.com/post/webinars-revisited-a-review-of-aria-apis
     type: Documentation
   - name: ARIA Oncology Information System
-    url: https://cancercare.siemens-healthineers.com/products/software/digital-oncology/oncology-management-systems/aria-oncology-information-system
+    url: >-
+      https://cancercare.siemens-healthineers.com/products/software/digital-oncology/oncology-management-systems/aria-oncology-information-system
     type: Product
   - name: Varian Website
     url: https://www.varian.com
