@@ -1,0 +1,568 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Varian ARIA FHIR API",
+    "version": "R4-6.0.101"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://varian-smart.dynamicfhir.com/core/connect/authorize",
+      "accessTokenUrl": "https://varian-smart.dynamicfhir.com/core/connect/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Metadata",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Capability Statement",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://varian.dynamicfhir.com/fhir/varian/basepractice/r4/metadata"
+          },
+          "docs": "Returns the FHIR CapabilityStatement describing all supported resources, operations, and search parameters for this ARIA FHIR server."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Patient",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Patients",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://varian.dynamicfhir.com/fhir/varian/basepractice/r4/Patient",
+            "params": [
+              {
+                "name": "_id",
+                "value": "",
+                "type": "query",
+                "description": "Patient FHIR resource ID"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "query",
+                "description": "Patient identifier (e.g., MRN)"
+              },
+              {
+                "name": "family",
+                "value": "",
+                "type": "query",
+                "description": "Patient family (last) name"
+              },
+              {
+                "name": "given",
+                "value": "",
+                "type": "query",
+                "description": "Patient given (first) name"
+              },
+              {
+                "name": "birthdate",
+                "value": "",
+                "type": "query",
+                "description": "Patient birth date (YYYY-MM-DD)"
+              },
+              {
+                "name": "_count",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results to return"
+              }
+            ]
+          },
+          "docs": "Search for patients in the ARIA OIS by name, identifier, birth date, or other criteria."
+        },
+        {
+          "info": {
+            "name": "Get Patient",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://varian.dynamicfhir.com/fhir/varian/basepractice/r4/Patient/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "FHIR Patient resource ID"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific patient by their FHIR resource ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Condition",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Conditions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://varian.dynamicfhir.com/fhir/varian/basepractice/r4/Condition",
+            "params": [
+              {
+                "name": "patient",
+                "value": "",
+                "type": "query",
+                "description": "Patient reference (e.g., Patient/12345678)"
+              },
+              {
+                "name": "code",
+                "value": "",
+                "type": "query",
+                "description": "Condition code (ICD-10, SNOMED CT)"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "Condition category"
+              },
+              {
+                "name": "_count",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results"
+              }
+            ]
+          },
+          "docs": "Search for clinical conditions (diagnoses) associated with oncology patients. Returns ICD-10 coded conditions including cancer diagnoses."
+        },
+        {
+          "info": {
+            "name": "Get Condition",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://varian.dynamicfhir.com/fhir/varian/basepractice/r4/Condition/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific condition resource by ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Procedure",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Procedures",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://varian.dynamicfhir.com/fhir/varian/basepractice/r4/Procedure",
+            "params": [
+              {
+                "name": "patient",
+                "value": "",
+                "type": "query",
+                "description": "Patient reference"
+              },
+              {
+                "name": "code",
+                "value": "",
+                "type": "query",
+                "description": "Procedure code (CPT, SNOMED CT)"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "Procedure date (YYYY-MM-DD or date range)"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Procedure status"
+              },
+              {
+                "name": "_count",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search for procedures performed on oncology patients, including radiation therapy treatments, surgical procedures, and other clinical interventions."
+        },
+        {
+          "info": {
+            "name": "Get Procedure",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://varian.dynamicfhir.com/fhir/varian/basepractice/r4/Procedure/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific procedure by ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Observation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Observations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://varian.dynamicfhir.com/fhir/varian/basepractice/r4/Observation",
+            "params": [
+              {
+                "name": "patient",
+                "value": "",
+                "type": "query",
+                "description": "Patient reference"
+              },
+              {
+                "name": "code",
+                "value": "",
+                "type": "query",
+                "description": "Observation LOINC or SNOMED code"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "Observation date"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "Observation category (laboratory, vital-signs, etc.)"
+              },
+              {
+                "name": "_count",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search for clinical observations including lab results, vital signs, and treatment-related measurements for oncology patients."
+        },
+        {
+          "info": {
+            "name": "Get Observation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://varian.dynamicfhir.com/fhir/varian/basepractice/r4/Observation/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific observation by ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "DiagnosticReport",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Diagnostic Reports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://varian.dynamicfhir.com/fhir/varian/basepractice/r4/DiagnosticReport",
+            "params": [
+              {
+                "name": "patient",
+                "value": "",
+                "type": "query",
+                "description": "Patient reference"
+              },
+              {
+                "name": "code",
+                "value": "",
+                "type": "query",
+                "description": "Report type code"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "Report date"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Report status"
+              },
+              {
+                "name": "_count",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search for diagnostic reports associated with oncology patients, including pathology reports, imaging reports, and treatment summaries."
+        },
+        {
+          "info": {
+            "name": "Get Diagnostic Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://varian.dynamicfhir.com/fhir/varian/basepractice/r4/DiagnosticReport/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific diagnostic report by ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "CarePlan",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Care Plans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://varian.dynamicfhir.com/fhir/varian/basepractice/r4/CarePlan",
+            "params": [
+              {
+                "name": "patient",
+                "value": "",
+                "type": "query",
+                "description": "Patient reference"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Care plan status (active, completed, etc.)"
+              },
+              {
+                "name": "_count",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search for care plans for oncology patients, including radiation therapy treatment plans and overall cancer care plans."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "MedicationRequest",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Medication Requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://varian.dynamicfhir.com/fhir/varian/basepractice/r4/MedicationRequest",
+            "params": [
+              {
+                "name": "patient",
+                "value": "",
+                "type": "query",
+                "description": "Patient reference"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Medication request status"
+              },
+              {
+                "name": "_count",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search for medication requests (prescriptions) for oncology patients including chemotherapy orders and supportive care medications."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "AllergyIntolerance",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Allergy Intolerances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://varian.dynamicfhir.com/fhir/varian/basepractice/r4/AllergyIntolerance",
+            "params": [
+              {
+                "name": "patient",
+                "value": "",
+                "type": "query",
+                "description": "Patient reference"
+              },
+              {
+                "name": "_count",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search for allergy and intolerance records for oncology patients."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "DocumentReference",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Document References",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://varian.dynamicfhir.com/fhir/varian/basepractice/r4/DocumentReference",
+            "params": [
+              {
+                "name": "patient",
+                "value": "",
+                "type": "query",
+                "description": "Patient reference"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Document type code (LOINC)"
+              },
+              {
+                "name": "_count",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search for clinical document references including treatment summaries, consent forms, and clinical notes for oncology patients."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Goal",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Goals",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://varian.dynamicfhir.com/fhir/varian/basepractice/r4/Goal",
+            "params": [
+              {
+                "name": "patient",
+                "value": "",
+                "type": "query",
+                "description": "Patient reference"
+              },
+              {
+                "name": "lifecycle-status",
+                "value": "",
+                "type": "query",
+                "description": "Goal lifecycle status"
+              },
+              {
+                "name": "_count",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search for treatment goals for oncology patients."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

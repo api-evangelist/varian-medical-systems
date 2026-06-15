@@ -1,0 +1,3019 @@
+{
+  "item": [
+    {
+      "id": "11ef4bc6-a6f1-4920-8ab5-944cec80eafb",
+      "name": "Metadata",
+      "description": {
+        "content": "FHIR server capability and metadata",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b5c38afe-49e8-4dfa-8c21-a7bbadd614cc",
+          "name": "Get Capability Statement",
+          "request": {
+            "name": "Get Capability Statement",
+            "description": {
+              "content": "Returns the FHIR CapabilityStatement describing all supported resources, operations, and search parameters for this ARIA FHIR server.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "metadata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/fhir+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3e07d79f-12fd-48cd-afd8-9f58c390729c",
+              "name": "FHIR CapabilityStatement",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"CapabilityStatement\",\n  \"status\": \"string\",\n  \"date\": \"1956-11-17T23:23:35.992Z\",\n  \"kind\": \"instance\",\n  \"fhirVersion\": \"string\",\n  \"id\": \"string\",\n  \"meta\": {\n    \"versionId\": \"string\",\n    \"lastUpdated\": \"1971-01-01T08:10:10.265Z\"\n  },\n  \"text\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "5cd2fd22-7a98-4d02-aa3a-68967398b41a",
+      "name": "Patient",
+      "description": {
+        "content": "Oncology patient demographics and identifiers",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0763608a-f237-4a2a-9409-d3150d67e99f",
+          "name": "Search Patients",
+          "request": {
+            "name": "Search Patients",
+            "description": {
+              "content": "Search for patients in the ARIA OIS by name, identifier, birth date, or other criteria.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Patient"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "_id",
+                  "value": "<string>",
+                  "description": "Patient FHIR resource ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "identifier",
+                  "value": "<string>",
+                  "description": "Patient identifier (e.g., MRN)"
+                },
+                {
+                  "disabled": false,
+                  "key": "family",
+                  "value": "<string>",
+                  "description": "Patient family (last) name"
+                },
+                {
+                  "disabled": false,
+                  "key": "given",
+                  "value": "<string>",
+                  "description": "Patient given (first) name"
+                },
+                {
+                  "disabled": false,
+                  "key": "birthdate",
+                  "value": "<date>",
+                  "description": "Patient birth date (YYYY-MM-DD)"
+                },
+                {
+                  "disabled": false,
+                  "key": "_count",
+                  "value": "<integer>",
+                  "description": "Maximum number of results to return"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/fhir+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e0bbb236-9c9d-4fd2-8292-ae89f0907902",
+              "name": "Bundle of Patient resources",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Patient"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "family",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "given",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "birthdate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "_count",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"Bundle\",\n  \"id\": \"string\",\n  \"meta\": {},\n  \"type\": \"searchset\",\n  \"total\": 3664,\n  \"link\": [\n    {\n      \"relation\": \"string\",\n      \"url\": \"http://jFDOd.daIEFvhVRE-i4nZrd+EZZag1GS5QIj2O.-EVtNVLaF.q3kfe0lp.3+dvcotJ6F3\"\n    },\n    {\n      \"relation\": \"string\",\n      \"url\": \"https://YBZGvoTNEpaZpY.yzcNdxgGys6fIycZ08wL-9N4D7M-JcUs.kGqkcZWipdtUNCoLVeBQGkwv,F4iAAUCV6dH\"\n    }\n  ],\n  \"entry\": [\n    {\n      \"fullUrl\": \"https://NyzfggtMPab.radpcqjXkbm6sNQ1AOYtfklutgxyLUw8MTvADSTCN0xYGU9na3A\",\n      \"resource\": {\n        \"resourceType\": \"string\",\n        \"id\": \"string\",\n        \"meta\": {\n          \"versionId\": \"string\",\n          \"lastUpdated\": \"2020-09-30T03:15:51.486Z\"\n        },\n        \"text\": {}\n      },\n      \"search\": {\n        \"mode\": \"string\"\n      }\n    },\n    {\n      \"fullUrl\": \"http://PkEjbNjeScRDxCzHWZHmpEX.zgtGFabDqlbMDEHyE.CKY,lEgb.9QVUBu8vfSS1h-eXFPYXaegm2rb1Jn2RcmIMkW2vsCz\",\n      \"resource\": {\n        \"resourceType\": \"string\",\n        \"id\": \"string\",\n        \"meta\": {\n          \"versionId\": \"string\",\n          \"lastUpdated\": \"1999-04-03T03:01:15.723Z\"\n        },\n        \"text\": {},\n        \"key_0\": false\n      },\n      \"search\": {\n        \"mode\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "58fdecc9-36d9-4c50-8b0c-a23e7c0a1d96",
+              "name": "Unauthorized — missing or invalid SMART on FHIR token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Patient"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "identifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "family",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "given",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "birthdate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "_count",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"OperationOutcome\",\n  \"issue\": [\n    {\n      \"severity\": \"fatal\",\n      \"code\": \"string\",\n      \"details\": {},\n      \"diagnostics\": \"string\"\n    },\n    {\n      \"severity\": \"fatal\",\n      \"code\": \"string\",\n      \"details\": {},\n      \"diagnostics\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "71fbc5bf-471d-4432-b504-d5ac8c6c40d0",
+          "name": "Get Patient",
+          "request": {
+            "name": "Get Patient",
+            "description": {
+              "content": "Retrieve a specific patient by their FHIR resource ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Patient",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) FHIR Patient resource ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/fhir+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e98e6311-dcf7-4ec8-a5ce-9a590480523f",
+              "name": "Patient resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Patient",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) FHIR Patient resource ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"Patient\",\n  \"identifier\": [\n    {\n      \"system\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"system\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"name\": [\n    {\n      \"use\": \"string\",\n      \"family\": \"string\",\n      \"given\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"use\": \"string\",\n      \"family\": \"string\",\n      \"given\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"birthDate\": \"1975-09-29\",\n  \"gender\": \"unknown\",\n  \"id\": \"string\",\n  \"meta\": {\n    \"versionId\": \"string\",\n    \"lastUpdated\": \"1983-09-14T19:32:28.399Z\"\n  },\n  \"text\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "00ca4184-43cd-4b67-8136-78e536ad5999",
+              "name": "Unauthorized — missing or invalid SMART on FHIR token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Patient",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) FHIR Patient resource ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"OperationOutcome\",\n  \"issue\": [\n    {\n      \"severity\": \"fatal\",\n      \"code\": \"string\",\n      \"details\": {},\n      \"diagnostics\": \"string\"\n    },\n    {\n      \"severity\": \"fatal\",\n      \"code\": \"string\",\n      \"details\": {},\n      \"diagnostics\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "77fac5dd-7758-4f02-9504-b1cb19ea0cb9",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Patient",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) FHIR Patient resource ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"OperationOutcome\",\n  \"issue\": [\n    {\n      \"severity\": \"fatal\",\n      \"code\": \"string\",\n      \"details\": {},\n      \"diagnostics\": \"string\"\n    },\n    {\n      \"severity\": \"fatal\",\n      \"code\": \"string\",\n      \"details\": {},\n      \"diagnostics\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "82524a61-839a-457f-9e34-4d23a1bf88eb",
+      "name": "Condition",
+      "description": {
+        "content": "Cancer diagnoses and clinical conditions",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a6db44c4-446f-4459-b960-ffd0df1fb523",
+          "name": "Search Conditions",
+          "request": {
+            "name": "Search Conditions",
+            "description": {
+              "content": "Search for clinical conditions (diagnoses) associated with oncology patients. Returns ICD-10 coded conditions including cancer diagnoses.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Condition"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "patient",
+                  "value": "<string>",
+                  "description": "(Required) Patient reference (e.g., Patient/12345678)"
+                },
+                {
+                  "disabled": false,
+                  "key": "code",
+                  "value": "<string>",
+                  "description": "Condition code (ICD-10, SNOMED CT)"
+                },
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>",
+                  "description": "Condition category"
+                },
+                {
+                  "disabled": false,
+                  "key": "_count",
+                  "value": "<integer>",
+                  "description": "Maximum number of results"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/fhir+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "37aa2aea-9a3c-462c-abf2-e1ee7b7ed07f",
+              "name": "Bundle of Condition resources",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Condition"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patient",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_count",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"Bundle\",\n  \"id\": \"string\",\n  \"meta\": {},\n  \"type\": \"searchset\",\n  \"total\": 3664,\n  \"link\": [\n    {\n      \"relation\": \"string\",\n      \"url\": \"http://jFDOd.daIEFvhVRE-i4nZrd+EZZag1GS5QIj2O.-EVtNVLaF.q3kfe0lp.3+dvcotJ6F3\"\n    },\n    {\n      \"relation\": \"string\",\n      \"url\": \"https://YBZGvoTNEpaZpY.yzcNdxgGys6fIycZ08wL-9N4D7M-JcUs.kGqkcZWipdtUNCoLVeBQGkwv,F4iAAUCV6dH\"\n    }\n  ],\n  \"entry\": [\n    {\n      \"fullUrl\": \"https://NyzfggtMPab.radpcqjXkbm6sNQ1AOYtfklutgxyLUw8MTvADSTCN0xYGU9na3A\",\n      \"resource\": {\n        \"resourceType\": \"string\",\n        \"id\": \"string\",\n        \"meta\": {\n          \"versionId\": \"string\",\n          \"lastUpdated\": \"2020-09-30T03:15:51.486Z\"\n        },\n        \"text\": {}\n      },\n      \"search\": {\n        \"mode\": \"string\"\n      }\n    },\n    {\n      \"fullUrl\": \"http://PkEjbNjeScRDxCzHWZHmpEX.zgtGFabDqlbMDEHyE.CKY,lEgb.9QVUBu8vfSS1h-eXFPYXaegm2rb1Jn2RcmIMkW2vsCz\",\n      \"resource\": {\n        \"resourceType\": \"string\",\n        \"id\": \"string\",\n        \"meta\": {\n          \"versionId\": \"string\",\n          \"lastUpdated\": \"1999-04-03T03:01:15.723Z\"\n        },\n        \"text\": {},\n        \"key_0\": false\n      },\n      \"search\": {\n        \"mode\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a41697a8-5c56-433b-ad6e-c1d476b1bdef",
+              "name": "Unauthorized — missing or invalid SMART on FHIR token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Condition"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patient",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_count",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"OperationOutcome\",\n  \"issue\": [\n    {\n      \"severity\": \"fatal\",\n      \"code\": \"string\",\n      \"details\": {},\n      \"diagnostics\": \"string\"\n    },\n    {\n      \"severity\": \"fatal\",\n      \"code\": \"string\",\n      \"details\": {},\n      \"diagnostics\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d98732ab-ffda-4141-b82a-e5293c98c004",
+          "name": "Get Condition",
+          "request": {
+            "name": "Get Condition",
+            "description": {
+              "content": "Retrieve a specific condition resource by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Condition",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/fhir+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "41343b59-8faf-4fd5-8db5-644773d005d2",
+              "name": "Condition resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Condition",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"string\",\n  \"id\": \"string\",\n  \"meta\": {\n    \"versionId\": \"string\",\n    \"lastUpdated\": \"2011-01-24T12:35:30.029Z\"\n  },\n  \"text\": {},\n  \"key_0\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d68a12a6-b4cf-4f15-a4cc-6fc273dc2a34",
+              "name": "Unauthorized — missing or invalid SMART on FHIR token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Condition",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"OperationOutcome\",\n  \"issue\": [\n    {\n      \"severity\": \"fatal\",\n      \"code\": \"string\",\n      \"details\": {},\n      \"diagnostics\": \"string\"\n    },\n    {\n      \"severity\": \"fatal\",\n      \"code\": \"string\",\n      \"details\": {},\n      \"diagnostics\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "72fad7f9-c9f8-43cf-bcf9-6daa4ecfaa20",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Condition",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"OperationOutcome\",\n  \"issue\": [\n    {\n      \"severity\": \"fatal\",\n      \"code\": \"string\",\n      \"details\": {},\n      \"diagnostics\": \"string\"\n    },\n    {\n      \"severity\": \"fatal\",\n      \"code\": \"string\",\n      \"details\": {},\n      \"diagnostics\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "340199c4-24d4-4026-a36b-ca4f058d336f",
+      "name": "Procedure",
+      "description": {
+        "content": "Radiation therapy and other clinical procedures",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "274f2647-dc4d-44c0-9a80-eee3e5fbdc45",
+          "name": "Search Procedures",
+          "request": {
+            "name": "Search Procedures",
+            "description": {
+              "content": "Search for procedures performed on oncology patients, including radiation therapy treatments, surgical procedures, and other clinical interventions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Procedure"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "patient",
+                  "value": "<string>",
+                  "description": "(Required) Patient reference"
+                },
+                {
+                  "disabled": false,
+                  "key": "code",
+                  "value": "<string>",
+                  "description": "Procedure code (CPT, SNOMED CT)"
+                },
+                {
+                  "disabled": false,
+                  "key": "date",
+                  "value": "<string>",
+                  "description": "Procedure date (YYYY-MM-DD or date range)"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Procedure status"
+                },
+                {
+                  "disabled": false,
+                  "key": "_count",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/fhir+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "88328d86-f30a-4889-97a9-cf4e4a631183",
+              "name": "Bundle of Procedure resources",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Procedure"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patient",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_count",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"Bundle\",\n  \"id\": \"string\",\n  \"meta\": {},\n  \"type\": \"searchset\",\n  \"total\": 3664,\n  \"link\": [\n    {\n      \"relation\": \"string\",\n      \"url\": \"http://jFDOd.daIEFvhVRE-i4nZrd+EZZag1GS5QIj2O.-EVtNVLaF.q3kfe0lp.3+dvcotJ6F3\"\n    },\n    {\n      \"relation\": \"string\",\n      \"url\": \"https://YBZGvoTNEpaZpY.yzcNdxgGys6fIycZ08wL-9N4D7M-JcUs.kGqkcZWipdtUNCoLVeBQGkwv,F4iAAUCV6dH\"\n    }\n  ],\n  \"entry\": [\n    {\n      \"fullUrl\": \"https://NyzfggtMPab.radpcqjXkbm6sNQ1AOYtfklutgxyLUw8MTvADSTCN0xYGU9na3A\",\n      \"resource\": {\n        \"resourceType\": \"string\",\n        \"id\": \"string\",\n        \"meta\": {\n          \"versionId\": \"string\",\n          \"lastUpdated\": \"2020-09-30T03:15:51.486Z\"\n        },\n        \"text\": {}\n      },\n      \"search\": {\n        \"mode\": \"string\"\n      }\n    },\n    {\n      \"fullUrl\": \"http://PkEjbNjeScRDxCzHWZHmpEX.zgtGFabDqlbMDEHyE.CKY,lEgb.9QVUBu8vfSS1h-eXFPYXaegm2rb1Jn2RcmIMkW2vsCz\",\n      \"resource\": {\n        \"resourceType\": \"string\",\n        \"id\": \"string\",\n        \"meta\": {\n          \"versionId\": \"string\",\n          \"lastUpdated\": \"1999-04-03T03:01:15.723Z\"\n        },\n        \"text\": {},\n        \"key_0\": false\n      },\n      \"search\": {\n        \"mode\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "266e79d7-3883-4ab4-a0df-880718ec731b",
+              "name": "Unauthorized — missing or invalid SMART on FHIR token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Procedure"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patient",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_count",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"OperationOutcome\",\n  \"issue\": [\n    {\n      \"severity\": \"fatal\",\n      \"code\": \"string\",\n      \"details\": {},\n      \"diagnostics\": \"string\"\n    },\n    {\n      \"severity\": \"fatal\",\n      \"code\": \"string\",\n      \"details\": {},\n      \"diagnostics\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "629150a2-4ab2-4d82-bcaf-ebac69cbbbeb",
+          "name": "Get Procedure",
+          "request": {
+            "name": "Get Procedure",
+            "description": {
+              "content": "Retrieve a specific procedure by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Procedure",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/fhir+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a308951f-8e9d-4cb5-bb36-7c592a8ed69d",
+              "name": "Procedure resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Procedure",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"string\",\n  \"id\": \"string\",\n  \"meta\": {\n    \"versionId\": \"string\",\n    \"lastUpdated\": \"2011-01-24T12:35:30.029Z\"\n  },\n  \"text\": {},\n  \"key_0\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1952e2f1-9d91-46a9-a699-a3f422cbb6c5",
+              "name": "Unauthorized — missing or invalid SMART on FHIR token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Procedure",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"OperationOutcome\",\n  \"issue\": [\n    {\n      \"severity\": \"fatal\",\n      \"code\": \"string\",\n      \"details\": {},\n      \"diagnostics\": \"string\"\n    },\n    {\n      \"severity\": \"fatal\",\n      \"code\": \"string\",\n      \"details\": {},\n      \"diagnostics\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f96d3c3a-bdb1-4b36-9581-d8fabc282d1d",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Procedure",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"OperationOutcome\",\n  \"issue\": [\n    {\n      \"severity\": \"fatal\",\n      \"code\": \"string\",\n      \"details\": {},\n      \"diagnostics\": \"string\"\n    },\n    {\n      \"severity\": \"fatal\",\n      \"code\": \"string\",\n      \"details\": {},\n      \"diagnostics\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "a7a63d5d-905e-4abf-bdc4-164a9654451d",
+      "name": "Observation",
+      "description": {
+        "content": "Labs, vitals, and clinical measurements",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7d36ec6f-9273-4507-80eb-8f98217a924c",
+          "name": "Search Observations",
+          "request": {
+            "name": "Search Observations",
+            "description": {
+              "content": "Search for clinical observations including lab results, vital signs, and treatment-related measurements for oncology patients.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Observation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "patient",
+                  "value": "<string>",
+                  "description": "(Required) Patient reference"
+                },
+                {
+                  "disabled": false,
+                  "key": "code",
+                  "value": "<string>",
+                  "description": "Observation LOINC or SNOMED code"
+                },
+                {
+                  "disabled": false,
+                  "key": "date",
+                  "value": "<string>",
+                  "description": "Observation date"
+                },
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>",
+                  "description": "Observation category (laboratory, vital-signs, etc.)"
+                },
+                {
+                  "disabled": false,
+                  "key": "_count",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/fhir+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ed5ecc25-07db-4d6a-a73e-1b9331b10cb9",
+              "name": "Bundle of Observation resources",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Observation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patient",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_count",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"Bundle\",\n  \"id\": \"string\",\n  \"meta\": {},\n  \"type\": \"searchset\",\n  \"total\": 3664,\n  \"link\": [\n    {\n      \"relation\": \"string\",\n      \"url\": \"http://jFDOd.daIEFvhVRE-i4nZrd+EZZag1GS5QIj2O.-EVtNVLaF.q3kfe0lp.3+dvcotJ6F3\"\n    },\n    {\n      \"relation\": \"string\",\n      \"url\": \"https://YBZGvoTNEpaZpY.yzcNdxgGys6fIycZ08wL-9N4D7M-JcUs.kGqkcZWipdtUNCoLVeBQGkwv,F4iAAUCV6dH\"\n    }\n  ],\n  \"entry\": [\n    {\n      \"fullUrl\": \"https://NyzfggtMPab.radpcqjXkbm6sNQ1AOYtfklutgxyLUw8MTvADSTCN0xYGU9na3A\",\n      \"resource\": {\n        \"resourceType\": \"string\",\n        \"id\": \"string\",\n        \"meta\": {\n          \"versionId\": \"string\",\n          \"lastUpdated\": \"2020-09-30T03:15:51.486Z\"\n        },\n        \"text\": {}\n      },\n      \"search\": {\n        \"mode\": \"string\"\n      }\n    },\n    {\n      \"fullUrl\": \"http://PkEjbNjeScRDxCzHWZHmpEX.zgtGFabDqlbMDEHyE.CKY,lEgb.9QVUBu8vfSS1h-eXFPYXaegm2rb1Jn2RcmIMkW2vsCz\",\n      \"resource\": {\n        \"resourceType\": \"string\",\n        \"id\": \"string\",\n        \"meta\": {\n          \"versionId\": \"string\",\n          \"lastUpdated\": \"1999-04-03T03:01:15.723Z\"\n        },\n        \"text\": {},\n        \"key_0\": false\n      },\n      \"search\": {\n        \"mode\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "59efd5a6-6901-4e10-a565-e85009be3596",
+              "name": "Unauthorized — missing or invalid SMART on FHIR token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Observation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patient",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_count",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"OperationOutcome\",\n  \"issue\": [\n    {\n      \"severity\": \"fatal\",\n      \"code\": \"string\",\n      \"details\": {},\n      \"diagnostics\": \"string\"\n    },\n    {\n      \"severity\": \"fatal\",\n      \"code\": \"string\",\n      \"details\": {},\n      \"diagnostics\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6c26b78f-efe0-4c21-b59d-a53e2079dc7b",
+          "name": "Get Observation",
+          "request": {
+            "name": "Get Observation",
+            "description": {
+              "content": "Retrieve a specific observation by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Observation",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/fhir+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9307a3d3-24c9-4383-9286-75af6a416a13",
+              "name": "Observation resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Observation",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"string\",\n  \"id\": \"string\",\n  \"meta\": {\n    \"versionId\": \"string\",\n    \"lastUpdated\": \"2011-01-24T12:35:30.029Z\"\n  },\n  \"text\": {},\n  \"key_0\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bf22b19e-cb3e-4bc5-ac00-624b2a792746",
+              "name": "Unauthorized — missing or invalid SMART on FHIR token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Observation",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"OperationOutcome\",\n  \"issue\": [\n    {\n      \"severity\": \"fatal\",\n      \"code\": \"string\",\n      \"details\": {},\n      \"diagnostics\": \"string\"\n    },\n    {\n      \"severity\": \"fatal\",\n      \"code\": \"string\",\n      \"details\": {},\n      \"diagnostics\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2a812fc7-7700-4128-a11b-080af5e59701",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Observation",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"OperationOutcome\",\n  \"issue\": [\n    {\n      \"severity\": \"fatal\",\n      \"code\": \"string\",\n      \"details\": {},\n      \"diagnostics\": \"string\"\n    },\n    {\n      \"severity\": \"fatal\",\n      \"code\": \"string\",\n      \"details\": {},\n      \"diagnostics\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "44b22d8a-ee16-4e69-aaa9-d80696358cf3",
+      "name": "DiagnosticReport",
+      "description": {
+        "content": "Pathology, imaging, and treatment reports",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4d579f41-c049-4b55-ac66-fea87591eb1d",
+          "name": "Search Diagnostic Reports",
+          "request": {
+            "name": "Search Diagnostic Reports",
+            "description": {
+              "content": "Search for diagnostic reports associated with oncology patients, including pathology reports, imaging reports, and treatment summaries.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "DiagnosticReport"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "patient",
+                  "value": "<string>",
+                  "description": "(Required) Patient reference"
+                },
+                {
+                  "disabled": false,
+                  "key": "code",
+                  "value": "<string>",
+                  "description": "Report type code"
+                },
+                {
+                  "disabled": false,
+                  "key": "date",
+                  "value": "<string>",
+                  "description": "Report date"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Report status"
+                },
+                {
+                  "disabled": false,
+                  "key": "_count",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/fhir+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a05b1a1e-2840-4345-bc6f-f0037816543f",
+              "name": "Bundle of DiagnosticReport resources",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DiagnosticReport"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patient",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_count",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"Bundle\",\n  \"id\": \"string\",\n  \"meta\": {},\n  \"type\": \"searchset\",\n  \"total\": 3664,\n  \"link\": [\n    {\n      \"relation\": \"string\",\n      \"url\": \"http://jFDOd.daIEFvhVRE-i4nZrd+EZZag1GS5QIj2O.-EVtNVLaF.q3kfe0lp.3+dvcotJ6F3\"\n    },\n    {\n      \"relation\": \"string\",\n      \"url\": \"https://YBZGvoTNEpaZpY.yzcNdxgGys6fIycZ08wL-9N4D7M-JcUs.kGqkcZWipdtUNCoLVeBQGkwv,F4iAAUCV6dH\"\n    }\n  ],\n  \"entry\": [\n    {\n      \"fullUrl\": \"https://NyzfggtMPab.radpcqjXkbm6sNQ1AOYtfklutgxyLUw8MTvADSTCN0xYGU9na3A\",\n      \"resource\": {\n        \"resourceType\": \"string\",\n        \"id\": \"string\",\n        \"meta\": {\n          \"versionId\": \"string\",\n          \"lastUpdated\": \"2020-09-30T03:15:51.486Z\"\n        },\n        \"text\": {}\n      },\n      \"search\": {\n        \"mode\": \"string\"\n      }\n    },\n    {\n      \"fullUrl\": \"http://PkEjbNjeScRDxCzHWZHmpEX.zgtGFabDqlbMDEHyE.CKY,lEgb.9QVUBu8vfSS1h-eXFPYXaegm2rb1Jn2RcmIMkW2vsCz\",\n      \"resource\": {\n        \"resourceType\": \"string\",\n        \"id\": \"string\",\n        \"meta\": {\n          \"versionId\": \"string\",\n          \"lastUpdated\": \"1999-04-03T03:01:15.723Z\"\n        },\n        \"text\": {},\n        \"key_0\": false\n      },\n      \"search\": {\n        \"mode\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "63329f26-b513-4900-97c3-acb8f8f0f8a5",
+              "name": "Unauthorized — missing or invalid SMART on FHIR token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DiagnosticReport"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patient",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_count",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"OperationOutcome\",\n  \"issue\": [\n    {\n      \"severity\": \"fatal\",\n      \"code\": \"string\",\n      \"details\": {},\n      \"diagnostics\": \"string\"\n    },\n    {\n      \"severity\": \"fatal\",\n      \"code\": \"string\",\n      \"details\": {},\n      \"diagnostics\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c832b2c8-ebb2-4176-9724-753889a26af2",
+          "name": "Get Diagnostic Report",
+          "request": {
+            "name": "Get Diagnostic Report",
+            "description": {
+              "content": "Retrieve a specific diagnostic report by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "DiagnosticReport",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/fhir+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "57f42be2-1e0d-4db9-a969-14f58f50aaeb",
+              "name": "DiagnosticReport resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DiagnosticReport",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"string\",\n  \"id\": \"string\",\n  \"meta\": {\n    \"versionId\": \"string\",\n    \"lastUpdated\": \"2011-01-24T12:35:30.029Z\"\n  },\n  \"text\": {},\n  \"key_0\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "85eeef56-f97a-42e2-9942-785a50b8f561",
+              "name": "Unauthorized — missing or invalid SMART on FHIR token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DiagnosticReport",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"OperationOutcome\",\n  \"issue\": [\n    {\n      \"severity\": \"fatal\",\n      \"code\": \"string\",\n      \"details\": {},\n      \"diagnostics\": \"string\"\n    },\n    {\n      \"severity\": \"fatal\",\n      \"code\": \"string\",\n      \"details\": {},\n      \"diagnostics\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cbcd155d-9c3b-4dea-8c4e-134d766d16a4",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DiagnosticReport",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"OperationOutcome\",\n  \"issue\": [\n    {\n      \"severity\": \"error\",\n      \"code\": \"string\",\n      \"details\": {},\n      \"diagnostics\": \"string\"\n    },\n    {\n      \"severity\": \"fatal\",\n      \"code\": \"string\",\n      \"details\": {},\n      \"diagnostics\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "4de77a78-9762-47d1-ad3f-3edec0b4843d",
+      "name": "CarePlan",
+      "description": {
+        "content": "Oncology treatment and care plans",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "21abae72-15cc-4794-b097-58a54e27cdb6",
+          "name": "Search Care Plans",
+          "request": {
+            "name": "Search Care Plans",
+            "description": {
+              "content": "Search for care plans for oncology patients, including radiation therapy treatment plans and overall cancer care plans.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "CarePlan"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "patient",
+                  "value": "<string>",
+                  "description": "(Required) Patient reference"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Care plan status (active, completed, etc.)"
+                },
+                {
+                  "disabled": false,
+                  "key": "_count",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/fhir+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "66b74614-d0de-4174-85dd-bffdf20940b4",
+              "name": "Bundle of CarePlan resources",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "CarePlan"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patient",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_count",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"Bundle\",\n  \"id\": \"string\",\n  \"meta\": {},\n  \"type\": \"searchset\",\n  \"total\": 3664,\n  \"link\": [\n    {\n      \"relation\": \"string\",\n      \"url\": \"http://jFDOd.daIEFvhVRE-i4nZrd+EZZag1GS5QIj2O.-EVtNVLaF.q3kfe0lp.3+dvcotJ6F3\"\n    },\n    {\n      \"relation\": \"string\",\n      \"url\": \"https://YBZGvoTNEpaZpY.yzcNdxgGys6fIycZ08wL-9N4D7M-JcUs.kGqkcZWipdtUNCoLVeBQGkwv,F4iAAUCV6dH\"\n    }\n  ],\n  \"entry\": [\n    {\n      \"fullUrl\": \"https://NyzfggtMPab.radpcqjXkbm6sNQ1AOYtfklutgxyLUw8MTvADSTCN0xYGU9na3A\",\n      \"resource\": {\n        \"resourceType\": \"string\",\n        \"id\": \"string\",\n        \"meta\": {\n          \"versionId\": \"string\",\n          \"lastUpdated\": \"2020-09-30T03:15:51.486Z\"\n        },\n        \"text\": {}\n      },\n      \"search\": {\n        \"mode\": \"string\"\n      }\n    },\n    {\n      \"fullUrl\": \"http://PkEjbNjeScRDxCzHWZHmpEX.zgtGFabDqlbMDEHyE.CKY,lEgb.9QVUBu8vfSS1h-eXFPYXaegm2rb1Jn2RcmIMkW2vsCz\",\n      \"resource\": {\n        \"resourceType\": \"string\",\n        \"id\": \"string\",\n        \"meta\": {\n          \"versionId\": \"string\",\n          \"lastUpdated\": \"1999-04-03T03:01:15.723Z\"\n        },\n        \"text\": {},\n        \"key_0\": false\n      },\n      \"search\": {\n        \"mode\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7ae5120b-7969-497f-ac32-68a313248cf9",
+              "name": "Unauthorized — missing or invalid SMART on FHIR token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "CarePlan"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patient",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_count",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"OperationOutcome\",\n  \"issue\": [\n    {\n      \"severity\": \"fatal\",\n      \"code\": \"string\",\n      \"details\": {},\n      \"diagnostics\": \"string\"\n    },\n    {\n      \"severity\": \"fatal\",\n      \"code\": \"string\",\n      \"details\": {},\n      \"diagnostics\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "b1e88ecc-6214-49c1-822a-ef34a371ec03",
+      "name": "MedicationRequest",
+      "description": {
+        "content": "Chemotherapy and medication prescriptions",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8c3ebb1e-638a-4db7-bb7e-2c04a63b22a7",
+          "name": "Search Medication Requests",
+          "request": {
+            "name": "Search Medication Requests",
+            "description": {
+              "content": "Search for medication requests (prescriptions) for oncology patients including chemotherapy orders and supportive care medications.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "MedicationRequest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "patient",
+                  "value": "<string>",
+                  "description": "(Required) Patient reference"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Medication request status"
+                },
+                {
+                  "disabled": false,
+                  "key": "_count",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/fhir+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fdd6753f-87ef-49a1-8ee7-a71b5317f4dc",
+              "name": "Bundle of MedicationRequest resources",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "MedicationRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patient",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_count",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"Bundle\",\n  \"id\": \"string\",\n  \"meta\": {},\n  \"type\": \"searchset\",\n  \"total\": 3664,\n  \"link\": [\n    {\n      \"relation\": \"string\",\n      \"url\": \"http://jFDOd.daIEFvhVRE-i4nZrd+EZZag1GS5QIj2O.-EVtNVLaF.q3kfe0lp.3+dvcotJ6F3\"\n    },\n    {\n      \"relation\": \"string\",\n      \"url\": \"https://YBZGvoTNEpaZpY.yzcNdxgGys6fIycZ08wL-9N4D7M-JcUs.kGqkcZWipdtUNCoLVeBQGkwv,F4iAAUCV6dH\"\n    }\n  ],\n  \"entry\": [\n    {\n      \"fullUrl\": \"https://NyzfggtMPab.radpcqjXkbm6sNQ1AOYtfklutgxyLUw8MTvADSTCN0xYGU9na3A\",\n      \"resource\": {\n        \"resourceType\": \"string\",\n        \"id\": \"string\",\n        \"meta\": {\n          \"versionId\": \"string\",\n          \"lastUpdated\": \"2020-09-30T03:15:51.486Z\"\n        },\n        \"text\": {}\n      },\n      \"search\": {\n        \"mode\": \"string\"\n      }\n    },\n    {\n      \"fullUrl\": \"http://PkEjbNjeScRDxCzHWZHmpEX.zgtGFabDqlbMDEHyE.CKY,lEgb.9QVUBu8vfSS1h-eXFPYXaegm2rb1Jn2RcmIMkW2vsCz\",\n      \"resource\": {\n        \"resourceType\": \"string\",\n        \"id\": \"string\",\n        \"meta\": {\n          \"versionId\": \"string\",\n          \"lastUpdated\": \"1999-04-03T03:01:15.723Z\"\n        },\n        \"text\": {},\n        \"key_0\": false\n      },\n      \"search\": {\n        \"mode\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bac86e15-2770-47cf-aa0b-4074e0e96228",
+              "name": "Unauthorized — missing or invalid SMART on FHIR token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "MedicationRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patient",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_count",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"OperationOutcome\",\n  \"issue\": [\n    {\n      \"severity\": \"fatal\",\n      \"code\": \"string\",\n      \"details\": {},\n      \"diagnostics\": \"string\"\n    },\n    {\n      \"severity\": \"fatal\",\n      \"code\": \"string\",\n      \"details\": {},\n      \"diagnostics\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "fe3e26ef-6b6d-4fe9-91ec-41b908afee17",
+      "name": "AllergyIntolerance",
+      "description": {
+        "content": "Patient allergy and intolerance records",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3cb7bde5-43ab-460f-b914-b0932941b40c",
+          "name": "Search Allergy Intolerances",
+          "request": {
+            "name": "Search Allergy Intolerances",
+            "description": {
+              "content": "Search for allergy and intolerance records for oncology patients.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "AllergyIntolerance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "patient",
+                  "value": "<string>",
+                  "description": "(Required) Patient reference"
+                },
+                {
+                  "disabled": false,
+                  "key": "_count",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/fhir+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "488134d7-f75a-464f-abbb-a7a870e84102",
+              "name": "Bundle of AllergyIntolerance resources",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "AllergyIntolerance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patient",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_count",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"Bundle\",\n  \"id\": \"string\",\n  \"meta\": {},\n  \"type\": \"searchset\",\n  \"total\": 3664,\n  \"link\": [\n    {\n      \"relation\": \"string\",\n      \"url\": \"http://jFDOd.daIEFvhVRE-i4nZrd+EZZag1GS5QIj2O.-EVtNVLaF.q3kfe0lp.3+dvcotJ6F3\"\n    },\n    {\n      \"relation\": \"string\",\n      \"url\": \"https://YBZGvoTNEpaZpY.yzcNdxgGys6fIycZ08wL-9N4D7M-JcUs.kGqkcZWipdtUNCoLVeBQGkwv,F4iAAUCV6dH\"\n    }\n  ],\n  \"entry\": [\n    {\n      \"fullUrl\": \"https://NyzfggtMPab.radpcqjXkbm6sNQ1AOYtfklutgxyLUw8MTvADSTCN0xYGU9na3A\",\n      \"resource\": {\n        \"resourceType\": \"string\",\n        \"id\": \"string\",\n        \"meta\": {\n          \"versionId\": \"string\",\n          \"lastUpdated\": \"2020-09-30T03:15:51.486Z\"\n        },\n        \"text\": {}\n      },\n      \"search\": {\n        \"mode\": \"string\"\n      }\n    },\n    {\n      \"fullUrl\": \"http://PkEjbNjeScRDxCzHWZHmpEX.zgtGFabDqlbMDEHyE.CKY,lEgb.9QVUBu8vfSS1h-eXFPYXaegm2rb1Jn2RcmIMkW2vsCz\",\n      \"resource\": {\n        \"resourceType\": \"string\",\n        \"id\": \"string\",\n        \"meta\": {\n          \"versionId\": \"string\",\n          \"lastUpdated\": \"1999-04-03T03:01:15.723Z\"\n        },\n        \"text\": {},\n        \"key_0\": false\n      },\n      \"search\": {\n        \"mode\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d4a1412e-5ce4-4310-85ef-a87aeb350269",
+              "name": "Unauthorized — missing or invalid SMART on FHIR token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "AllergyIntolerance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patient",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_count",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"OperationOutcome\",\n  \"issue\": [\n    {\n      \"severity\": \"fatal\",\n      \"code\": \"string\",\n      \"details\": {},\n      \"diagnostics\": \"string\"\n    },\n    {\n      \"severity\": \"fatal\",\n      \"code\": \"string\",\n      \"details\": {},\n      \"diagnostics\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "2c8c7d94-2420-4f34-8f9c-fb6deb01a9b1",
+      "name": "DocumentReference",
+      "description": {
+        "content": "Clinical document management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "93174d11-5a29-456f-8832-f301815952b8",
+          "name": "Search Document References",
+          "request": {
+            "name": "Search Document References",
+            "description": {
+              "content": "Search for clinical document references including treatment summaries, consent forms, and clinical notes for oncology patients.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "DocumentReference"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "patient",
+                  "value": "<string>",
+                  "description": "(Required) Patient reference"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Document type code (LOINC)"
+                },
+                {
+                  "disabled": false,
+                  "key": "_count",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/fhir+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bc507bda-834f-4687-841e-6f163bc8ba39",
+              "name": "Bundle of DocumentReference resources",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DocumentReference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patient",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_count",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"Bundle\",\n  \"id\": \"string\",\n  \"meta\": {},\n  \"type\": \"searchset\",\n  \"total\": 3664,\n  \"link\": [\n    {\n      \"relation\": \"string\",\n      \"url\": \"http://jFDOd.daIEFvhVRE-i4nZrd+EZZag1GS5QIj2O.-EVtNVLaF.q3kfe0lp.3+dvcotJ6F3\"\n    },\n    {\n      \"relation\": \"string\",\n      \"url\": \"https://YBZGvoTNEpaZpY.yzcNdxgGys6fIycZ08wL-9N4D7M-JcUs.kGqkcZWipdtUNCoLVeBQGkwv,F4iAAUCV6dH\"\n    }\n  ],\n  \"entry\": [\n    {\n      \"fullUrl\": \"https://NyzfggtMPab.radpcqjXkbm6sNQ1AOYtfklutgxyLUw8MTvADSTCN0xYGU9na3A\",\n      \"resource\": {\n        \"resourceType\": \"string\",\n        \"id\": \"string\",\n        \"meta\": {\n          \"versionId\": \"string\",\n          \"lastUpdated\": \"2020-09-30T03:15:51.486Z\"\n        },\n        \"text\": {}\n      },\n      \"search\": {\n        \"mode\": \"string\"\n      }\n    },\n    {\n      \"fullUrl\": \"http://PkEjbNjeScRDxCzHWZHmpEX.zgtGFabDqlbMDEHyE.CKY,lEgb.9QVUBu8vfSS1h-eXFPYXaegm2rb1Jn2RcmIMkW2vsCz\",\n      \"resource\": {\n        \"resourceType\": \"string\",\n        \"id\": \"string\",\n        \"meta\": {\n          \"versionId\": \"string\",\n          \"lastUpdated\": \"1999-04-03T03:01:15.723Z\"\n        },\n        \"text\": {},\n        \"key_0\": false\n      },\n      \"search\": {\n        \"mode\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aeec0d45-4793-4df2-a0a9-a529288d37ad",
+              "name": "Unauthorized — missing or invalid SMART on FHIR token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "DocumentReference"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patient",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_count",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"OperationOutcome\",\n  \"issue\": [\n    {\n      \"severity\": \"fatal\",\n      \"code\": \"string\",\n      \"details\": {},\n      \"diagnostics\": \"string\"\n    },\n    {\n      \"severity\": \"fatal\",\n      \"code\": \"string\",\n      \"details\": {},\n      \"diagnostics\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "92f23448-d22b-4fc2-a4a2-02c0b23ba054",
+      "name": "Goal",
+      "description": {
+        "content": "Treatment goals and objectives",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e8ae3f75-ebb2-4675-a8df-d1b786bc6678",
+          "name": "Search Goals",
+          "request": {
+            "name": "Search Goals",
+            "description": {
+              "content": "Search for treatment goals for oncology patients.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Goal"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "patient",
+                  "value": "<string>",
+                  "description": "(Required) Patient reference"
+                },
+                {
+                  "disabled": false,
+                  "key": "lifecycle-status",
+                  "value": "<string>",
+                  "description": "Goal lifecycle status"
+                },
+                {
+                  "disabled": false,
+                  "key": "_count",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/fhir+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6effe286-7337-48db-8113-3ac6bcc12bd0",
+              "name": "Bundle of Goal resources",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Goal"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patient",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lifecycle-status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_count",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"Bundle\",\n  \"id\": \"string\",\n  \"meta\": {},\n  \"type\": \"searchset\",\n  \"total\": 3664,\n  \"link\": [\n    {\n      \"relation\": \"string\",\n      \"url\": \"http://jFDOd.daIEFvhVRE-i4nZrd+EZZag1GS5QIj2O.-EVtNVLaF.q3kfe0lp.3+dvcotJ6F3\"\n    },\n    {\n      \"relation\": \"string\",\n      \"url\": \"https://YBZGvoTNEpaZpY.yzcNdxgGys6fIycZ08wL-9N4D7M-JcUs.kGqkcZWipdtUNCoLVeBQGkwv,F4iAAUCV6dH\"\n    }\n  ],\n  \"entry\": [\n    {\n      \"fullUrl\": \"https://NyzfggtMPab.radpcqjXkbm6sNQ1AOYtfklutgxyLUw8MTvADSTCN0xYGU9na3A\",\n      \"resource\": {\n        \"resourceType\": \"string\",\n        \"id\": \"string\",\n        \"meta\": {\n          \"versionId\": \"string\",\n          \"lastUpdated\": \"2020-09-30T03:15:51.486Z\"\n        },\n        \"text\": {}\n      },\n      \"search\": {\n        \"mode\": \"string\"\n      }\n    },\n    {\n      \"fullUrl\": \"http://PkEjbNjeScRDxCzHWZHmpEX.zgtGFabDqlbMDEHyE.CKY,lEgb.9QVUBu8vfSS1h-eXFPYXaegm2rb1Jn2RcmIMkW2vsCz\",\n      \"resource\": {\n        \"resourceType\": \"string\",\n        \"id\": \"string\",\n        \"meta\": {\n          \"versionId\": \"string\",\n          \"lastUpdated\": \"1999-04-03T03:01:15.723Z\"\n        },\n        \"text\": {},\n        \"key_0\": false\n      },\n      \"search\": {\n        \"mode\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "db99c1bb-7f2d-4d0e-8ec2-0fa3c5b0cf5c",
+              "name": "Unauthorized — missing or invalid SMART on FHIR token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Goal"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patient",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lifecycle-status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_count",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"OperationOutcome\",\n  \"issue\": [\n    {\n      \"severity\": \"error\",\n      \"code\": \"string\",\n      \"details\": {},\n      \"diagnostics\": \"string\"\n    },\n    {\n      \"severity\": \"fatal\",\n      \"code\": \"string\",\n      \"details\": {},\n      \"diagnostics\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://varian.dynamicfhir.com/fhir/varian/basepractice/r4",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "launch/patient patient/Patient.read patient/Condition.read patient/Procedure.read patient/Observation.read patient/DiagnosticReport.read patient/CarePlan.read patient/MedicationRequest.read patient/AllergyIntolerance.read patient/DocumentReference.read patient/Goal.read"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://varian-smart.dynamicfhir.com/core/connect/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://varian-smart.dynamicfhir.com/core/connect/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "1ca79d84-0e50-4b11-b0da-71f736a77a52",
+    "name": "Varian ARIA FHIR API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Varian ARIA FHIR R4 API provides SMART on FHIR access to oncology clinical data from the ARIA Oncology Information System (OIS). Enables EHR systems, clinical applications, and research tools to access patient-level oncology data including conditions, procedures, observations, care plans, medication requests, and diagnostic reports. The API is read-only and supports standard FHIR R4 search operations. Varian is a Siemens Healthineers company.\n\nContact Support:\n Name: Varian FHIR Developer Portal",
+      "type": "text/plain"
+    }
+  }
+}
