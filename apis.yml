@@ -90,7 +90,7 @@ common:
     type: Website
   - name: HL7 FHIR Standard
     url: https://hl7.org/fhir/R4/
-    type: Standard
+    type: Standards
   - name: DICOM Standard
     url: https://www.dicomstandard.org
-    type: Standard
+    type: Standards
