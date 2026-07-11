@@ -1,0 +1,19 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/varian-aria-fhir-openapi.yml
+summary:
+  types:
+  - oauth2
+  oauth2_flows:
+  - authorizationCode
+schemes:
+- name: OAuthSMARTonFHIR
+  type: oauth2
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://varian-smart.dynamicfhir.com/core/connect/authorize
+    tokenUrl: https://varian-smart.dynamicfhir.com/core/connect/token
+    scopes: 11
+  description: SMART on FHIR OAuth 2.0 authorization
+  sources:
+  - openapi/varian-aria-fhir-openapi.yml

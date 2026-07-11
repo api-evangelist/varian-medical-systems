@@ -64,6 +64,8 @@ apis:
       prescriptions, treatment plans, orders, and administrative data. Deployed on-premise within the healthcare
       institution's infrastructure.
 common:
+  - type: DomainSecurity
+    url: security/varian-medical-systems-domain-security.yml
   - type: Authentication
     url: authentication/varian-medical-systems-authentication.yml
   - type: OAuthScopes
