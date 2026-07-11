@@ -64,6 +64,10 @@ apis:
       prescriptions, treatment plans, orders, and administrative data. Deployed on-premise within the healthcare
       institution's infrastructure.
 common:
+  - type: Authentication
+    url: authentication/varian-medical-systems-authentication.yml
+  - type: OAuthScopes
+    url: scopes/varian-medical-systems-scopes.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/varian-medical-systems
   - name: ARIA FHIR Developer Portal

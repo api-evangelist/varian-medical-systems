@@ -1,0 +1,78 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/varian-aria-fhir-openapi.yml
+schemes:
+- name: OAuthSMARTonFHIR
+  source: openapi/varian-aria-fhir-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://varian-smart.dynamicfhir.com/core/connect/authorize
+    tokenUrl: https://varian-smart.dynamicfhir.com/core/connect/token
+  description: SMART on FHIR OAuth 2.0 authorization
+scopes:
+- scope: launch/patient
+  description: Patient context launch
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/varian-aria-fhir-openapi.yml
+- scope: patient/AllergyIntolerance.read
+  description: Read allergy records
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/varian-aria-fhir-openapi.yml
+- scope: patient/CarePlan.read
+  description: Read care plans
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/varian-aria-fhir-openapi.yml
+- scope: patient/Condition.read
+  description: Read patient conditions/diagnoses
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/varian-aria-fhir-openapi.yml
+- scope: patient/DiagnosticReport.read
+  description: Read diagnostic reports
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/varian-aria-fhir-openapi.yml
+- scope: patient/DocumentReference.read
+  description: Read document references
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/varian-aria-fhir-openapi.yml
+- scope: patient/Goal.read
+  description: Read treatment goals
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/varian-aria-fhir-openapi.yml
+- scope: patient/MedicationRequest.read
+  description: Read medication requests
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/varian-aria-fhir-openapi.yml
+- scope: patient/Observation.read
+  description: Read patient observations/labs
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/varian-aria-fhir-openapi.yml
+- scope: patient/Patient.read
+  description: Read patient demographics
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/varian-aria-fhir-openapi.yml
+- scope: patient/Procedure.read
+  description: Read patient procedures
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/varian-aria-fhir-openapi.yml
