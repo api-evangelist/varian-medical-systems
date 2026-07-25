@@ -1,0 +1,180 @@
+openapi: 3.1.0
+info:
+  title: Varian ARIA FHIR AllergyIntolerance DocumentReference API
+  description: The Varian ARIA FHIR R4 API provides SMART on FHIR access to oncology clinical data from the ARIA Oncology Information System (OIS). Enables EHR systems, clinical applications, and research tools to access patient-level oncology data including conditions, procedures, observations, care plans, medication requests, and diagnostic reports. The API is read-only and supports standard FHIR R4 search operations. Varian is a Siemens Healthineers company.
+  version: R4-6.0.101
+  contact:
+    name: Varian FHIR Developer Portal
+    url: https://varian.dynamicfhir.com
+  termsOfService: https://varian.dynamicfhir.com
+  license:
+    name: Proprietary
+    url: https://www.varian.com
+servers:
+- url: https://varian.dynamicfhir.com/fhir/varian/basepractice/r4
+  description: Varian ARIA FHIR R4 API Server
+security:
+- OAuthSMARTonFHIR:
+  - launch/patient
+  - patient/Patient.read
+  - patient/Condition.read
+  - patient/Procedure.read
+  - patient/Observation.read
+tags:
+- name: DocumentReference
+  description: Clinical document management
+paths:
+  /DocumentReference:
+    get:
+      operationId: searchDocumentReferences
+      summary: Search Document References
+      description: Search for clinical document references including treatment summaries, consent forms, and clinical notes for oncology patients.
+      tags:
+      - DocumentReference
+      parameters:
+      - name: patient
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Patient reference
+      - name: type
+        in: query
+        schema:
+          type: string
+        description: Document type code (LOINC)
+      - name: _count
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Bundle of DocumentReference resources
+          content:
+            application/fhir+json:
+              schema:
+                $ref: '#/components/schemas/Bundle'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  schemas:
+    Bundle:
+      type: object
+      description: FHIR Bundle containing search results
+      properties:
+        resourceType:
+          type: string
+          enum:
+          - Bundle
+        id:
+          type: string
+        meta:
+          type: object
+        type:
+          type: string
+          enum:
+          - searchset
+          - collection
+        total:
+          type: integer
+          description: Total number of matching resources
+        link:
+          type: array
+          items:
+            type: object
+            properties:
+              relation:
+                type: string
+              url:
+                type: string
+                format: uri
+        entry:
+          type: array
+          items:
+            type: object
+            properties:
+              fullUrl:
+                type: string
+                format: uri
+              resource:
+                $ref: '#/components/schemas/FHIRResource'
+              search:
+                type: object
+                properties:
+                  mode:
+                    type: string
+    FHIRResource:
+      type: object
+      description: Generic FHIR R4 resource
+      properties:
+        resourceType:
+          type: string
+          description: FHIR resource type
+        id:
+          type: string
+          description: Logical resource ID
+        meta:
+          type: object
+          properties:
+            versionId:
+              type: string
+            lastUpdated:
+              type: string
+              format: date-time
+        text:
+          type: object
+          description: Human-readable narrative
+      additionalProperties: true
+    OperationOutcome:
+      type: object
+      description: FHIR OperationOutcome for errors
+      properties:
+        resourceType:
+          type: string
+          enum:
+          - OperationOutcome
+        issue:
+          type: array
+          items:
+            type: object
+            properties:
+              severity:
+                type: string
+                enum:
+                - fatal
+                - error
+                - warning
+                - information
+              code:
+                type: string
+              details:
+                type: object
+              diagnostics:
+                type: string
+  responses:
+    Unauthorized:
+      description: Unauthorized — missing or invalid SMART on FHIR token
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+  securitySchemes:
+    OAuthSMARTonFHIR:
+      type: oauth2
+      description: SMART on FHIR OAuth 2.0 authorization
+      flows:
+        authorizationCode:
+          authorizationUrl: https://varian-smart.dynamicfhir.com/core/connect/authorize
+          tokenUrl: https://varian-smart.dynamicfhir.com/core/connect/token
+          scopes:
+            launch/patient: Patient context launch
+            patient/Patient.read: Read patient demographics
+            patient/Condition.read: Read patient conditions/diagnoses
+            patient/Procedure.read: Read patient procedures
+            patient/Observation.read: Read patient observations/labs
+            patient/DiagnosticReport.read: Read diagnostic reports
+            patient/CarePlan.read: Read care plans
+            patient/MedicationRequest.read: Read medication requests
+            patient/AllergyIntolerance.read: Read allergy records
+            patient/DocumentReference.read: Read document references
+            patient/Goal.read: Read treatment goals
