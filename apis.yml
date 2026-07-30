@@ -10,7 +10,20 @@ tags:
   - Health IT
   - Fortune 1000
 kind: company
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/varian-medical-systems.png
 access: 3rd-Party
 created: '2026-05-03'
 modified: '2026-05-19'
@@ -24,45 +37,177 @@ maintainers:
     email: kin@apievangelist.com
 specificationVersion: '0.19'
 apis:
-  - aid: varian-medical-systems:aria-fhir-api
-    name: ARIA FHIR API
-    tags:
-      - Healthcare
-      - Oncology
-      - FHIR
-      - Health IT
-      - Interoperability
-    humanURL: https://varian.dynamicfhir.com/varian/basepractice/r4/Home/ApiDocumentation
-    baseURL: https://varian.dynamicfhir.com/fhir/varian/basepractice/r4
-    properties:
-      - url: https://varian.dynamicfhir.com/varian/basepractice/r4/Home/ApiDocumentation
-        type: Documentation
-      - url: https://varian.dynamicfhir.com/fhir/varian/basepractice/r4/metadata
-        type: CapabilityStatement
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/varian-medical-systems/refs/heads/main/openapi/varian-aria-fhir-openapi.yml
-        type: OpenAPI
-    description: >-
-      The Varian ARIA FHIR R4 API provides SMART on FHIR access to oncology clinical data from the ARIA Oncology
-      Information System. Supports read and search operations for Patient, Condition, Procedure, Observation,
-      DiagnosticReport, CarePlan, MedicationRequest, and other clinical resources relevant to cancer care.
-  - aid: varian-medical-systems:aria-access-api
-    name: ARIA Access API
-    tags:
-      - Healthcare
-      - Oncology
-      - SOAP
-      - Web Services
-      - Health IT
-    humanURL: https://www.gatewayscripts.com/post/webinars-revisited-a-review-of-aria-apis
-    baseURL: https://localhost:55051/Gateway/Service.svc
-    properties:
-      - url: https://www.gatewayscripts.com/post/webinars-revisited-a-review-of-aria-apis
-        type: Documentation
-    description: >-
-      The legacy ARIA Access API provides SOAP and REST access to core ARIA entities including patients, appointments,
-      prescriptions, treatment plans, orders, and administrative data. Deployed on-premise within the healthcare
-      institution's infrastructure.
+- aid: varian-medical-systems:aria-access-api
+  name: ARIA Access API
+  tags:
+  - Healthcare
+  - Oncology
+  - SOAP
+  - Web Services
+  - Health IT
+  humanURL: https://www.gatewayscripts.com/post/webinars-revisited-a-review-of-aria-apis
+  baseURL: https://localhost:55051/Gateway/Service.svc
+  properties:
+  - url: https://www.gatewayscripts.com/post/webinars-revisited-a-review-of-aria-apis
+    type: Documentation
+  description: >-
+    The legacy ARIA Access API provides SOAP and REST access to core ARIA entities including patients,
+    appointments, prescriptions, treatment plans, orders, and administrative data. Deployed on-premise
+    within the healthcare institution's infrastructure.
+- aid: varian-medical-systems:varian-medical-systems-allergyintolerance-api
+  name: Varian Medical Systems AllergyIntolerance API
+  description: Patient allergy and intolerance records
+  humanURL: https://varian.dynamicfhir.com/varian/basepractice/r4/Home/ApiDocumentation
+  baseURL: https://varian.dynamicfhir.com/fhir/varian/basepractice/r4
+  tags:
+  - AllergyIntolerance
+  properties:
+  - type: OpenAPI
+    url: openapi/varian-medical-systems-allergyintolerance-api-openapi.yml
+  - type: Documentation
+    url: https://varian.dynamicfhir.com/varian/basepractice/r4/Home/ApiDocumentation
+  - type: CapabilityStatement
+    url: https://varian.dynamicfhir.com/fhir/varian/basepractice/r4/metadata
+- aid: varian-medical-systems:varian-medical-systems-careplan-api
+  name: Varian Medical Systems CarePlan API
+  description: Oncology treatment and care plans
+  humanURL: https://varian.dynamicfhir.com/varian/basepractice/r4/Home/ApiDocumentation
+  baseURL: https://varian.dynamicfhir.com/fhir/varian/basepractice/r4
+  tags:
+  - CarePlan
+  properties:
+  - type: OpenAPI
+    url: openapi/varian-medical-systems-careplan-api-openapi.yml
+  - type: Documentation
+    url: https://varian.dynamicfhir.com/varian/basepractice/r4/Home/ApiDocumentation
+  - type: CapabilityStatement
+    url: https://varian.dynamicfhir.com/fhir/varian/basepractice/r4/metadata
+- aid: varian-medical-systems:varian-medical-systems-condition-api
+  name: Varian Medical Systems Condition API
+  description: Cancer diagnoses and clinical conditions
+  humanURL: https://varian.dynamicfhir.com/varian/basepractice/r4/Home/ApiDocumentation
+  baseURL: https://varian.dynamicfhir.com/fhir/varian/basepractice/r4
+  tags:
+  - Condition
+  properties:
+  - type: OpenAPI
+    url: openapi/varian-medical-systems-condition-api-openapi.yml
+  - type: Documentation
+    url: https://varian.dynamicfhir.com/varian/basepractice/r4/Home/ApiDocumentation
+  - type: CapabilityStatement
+    url: https://varian.dynamicfhir.com/fhir/varian/basepractice/r4/metadata
+- aid: varian-medical-systems:varian-medical-systems-diagnosticreport-api
+  name: Varian Medical Systems DiagnosticReport API
+  description: Pathology, imaging, and treatment reports
+  humanURL: https://varian.dynamicfhir.com/varian/basepractice/r4/Home/ApiDocumentation
+  baseURL: https://varian.dynamicfhir.com/fhir/varian/basepractice/r4
+  tags:
+  - DiagnosticReport
+  properties:
+  - type: OpenAPI
+    url: openapi/varian-medical-systems-diagnosticreport-api-openapi.yml
+  - type: Documentation
+    url: https://varian.dynamicfhir.com/varian/basepractice/r4/Home/ApiDocumentation
+  - type: CapabilityStatement
+    url: https://varian.dynamicfhir.com/fhir/varian/basepractice/r4/metadata
+- aid: varian-medical-systems:varian-medical-systems-documentreference-api
+  name: Varian Medical Systems DocumentReference API
+  description: Clinical document management
+  humanURL: https://varian.dynamicfhir.com/varian/basepractice/r4/Home/ApiDocumentation
+  baseURL: https://varian.dynamicfhir.com/fhir/varian/basepractice/r4
+  tags:
+  - DocumentReference
+  properties:
+  - type: OpenAPI
+    url: openapi/varian-medical-systems-documentreference-api-openapi.yml
+  - type: Documentation
+    url: https://varian.dynamicfhir.com/varian/basepractice/r4/Home/ApiDocumentation
+  - type: CapabilityStatement
+    url: https://varian.dynamicfhir.com/fhir/varian/basepractice/r4/metadata
+- aid: varian-medical-systems:varian-medical-systems-goal-api
+  name: Varian Medical Systems Goal API
+  description: Treatment goals and objectives
+  humanURL: https://varian.dynamicfhir.com/varian/basepractice/r4/Home/ApiDocumentation
+  baseURL: https://varian.dynamicfhir.com/fhir/varian/basepractice/r4
+  tags:
+  - Goal
+  properties:
+  - type: OpenAPI
+    url: openapi/varian-medical-systems-goal-api-openapi.yml
+  - type: Documentation
+    url: https://varian.dynamicfhir.com/varian/basepractice/r4/Home/ApiDocumentation
+  - type: CapabilityStatement
+    url: https://varian.dynamicfhir.com/fhir/varian/basepractice/r4/metadata
+- aid: varian-medical-systems:varian-medical-systems-medicationrequest-api
+  name: Varian Medical Systems MedicationRequest API
+  description: Chemotherapy and medication prescriptions
+  humanURL: https://varian.dynamicfhir.com/varian/basepractice/r4/Home/ApiDocumentation
+  baseURL: https://varian.dynamicfhir.com/fhir/varian/basepractice/r4
+  tags:
+  - MedicationRequest
+  properties:
+  - type: OpenAPI
+    url: openapi/varian-medical-systems-medicationrequest-api-openapi.yml
+  - type: Documentation
+    url: https://varian.dynamicfhir.com/varian/basepractice/r4/Home/ApiDocumentation
+  - type: CapabilityStatement
+    url: https://varian.dynamicfhir.com/fhir/varian/basepractice/r4/metadata
+- aid: varian-medical-systems:varian-medical-systems-metadata-api
+  name: Varian Medical Systems Metadata API
+  description: FHIR server capability and metadata
+  humanURL: https://varian.dynamicfhir.com/varian/basepractice/r4/Home/ApiDocumentation
+  baseURL: https://varian.dynamicfhir.com/fhir/varian/basepractice/r4
+  tags:
+  - Metadata
+  properties:
+  - type: OpenAPI
+    url: openapi/varian-medical-systems-metadata-api-openapi.yml
+  - type: Documentation
+    url: https://varian.dynamicfhir.com/varian/basepractice/r4/Home/ApiDocumentation
+  - type: CapabilityStatement
+    url: https://varian.dynamicfhir.com/fhir/varian/basepractice/r4/metadata
+- aid: varian-medical-systems:varian-medical-systems-observation-api
+  name: Varian Medical Systems Observation API
+  description: Labs, vitals, and clinical measurements
+  humanURL: https://varian.dynamicfhir.com/varian/basepractice/r4/Home/ApiDocumentation
+  baseURL: https://varian.dynamicfhir.com/fhir/varian/basepractice/r4
+  tags:
+  - Observation
+  properties:
+  - type: OpenAPI
+    url: openapi/varian-medical-systems-observation-api-openapi.yml
+  - type: Documentation
+    url: https://varian.dynamicfhir.com/varian/basepractice/r4/Home/ApiDocumentation
+  - type: CapabilityStatement
+    url: https://varian.dynamicfhir.com/fhir/varian/basepractice/r4/metadata
+- aid: varian-medical-systems:varian-medical-systems-patient-api
+  name: Varian Medical Systems Patient API
+  description: Oncology patient demographics and identifiers
+  humanURL: https://varian.dynamicfhir.com/varian/basepractice/r4/Home/ApiDocumentation
+  baseURL: https://varian.dynamicfhir.com/fhir/varian/basepractice/r4
+  tags:
+  - Patient
+  properties:
+  - type: OpenAPI
+    url: openapi/varian-medical-systems-patient-api-openapi.yml
+  - type: Documentation
+    url: https://varian.dynamicfhir.com/varian/basepractice/r4/Home/ApiDocumentation
+  - type: CapabilityStatement
+    url: https://varian.dynamicfhir.com/fhir/varian/basepractice/r4/metadata
+- aid: varian-medical-systems:varian-medical-systems-procedure-api
+  name: Varian Medical Systems Procedure API
+  description: Radiation therapy and other clinical procedures
+  humanURL: https://varian.dynamicfhir.com/varian/basepractice/r4/Home/ApiDocumentation
+  baseURL: https://varian.dynamicfhir.com/fhir/varian/basepractice/r4
+  tags:
+  - Procedure
+  properties:
+  - type: OpenAPI
+    url: openapi/varian-medical-systems-procedure-api-openapi.yml
+  - type: Documentation
+    url: https://varian.dynamicfhir.com/varian/basepractice/r4/Home/ApiDocumentation
+  - type: CapabilityStatement
+    url: https://varian.dynamicfhir.com/fhir/varian/basepractice/r4/metadata
 common:
   - type: AgenticAccess
     url: agentic-access/varian-medical-systems-agentic-access.yml
