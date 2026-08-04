@@ -1,0 +1,34 @@
+{
+  "provider": "varian-medical-systems",
+  "sources": [
+    "varian-medical-systems-allergyintolerance-api-openapi.yml",
+    "varian-medical-systems-careplan-api-openapi.yml",
+    "varian-medical-systems-condition-api-openapi.yml",
+    "varian-medical-systems-diagnosticreport-api-openapi.yml",
+    "varian-medical-systems-documentreference-api-openapi.yml",
+    "varian-medical-systems-goal-api-openapi.yml",
+    "varian-medical-systems-medicationrequest-api-openapi.yml",
+    "varian-medical-systems-metadata-api-openapi.yml",
+    "varian-medical-systems-observation-api-openapi.yml",
+    "varian-medical-systems-patient-api-openapi.yml",
+    "varian-medical-systems-procedure-api-openapi.yml"
+  ],
+  "outputs": [
+    "varian-medical-systems-allergyintolerance-api-openapi.yml",
+    "varian-medical-systems-careplan-api-openapi.yml",
+    "varian-medical-systems-condition-api-openapi.yml",
+    "varian-medical-systems-diagnosticreport-api-openapi.yml",
+    "varian-medical-systems-documentreference-api-openapi.yml",
+    "varian-medical-systems-goal-api-openapi.yml",
+    "varian-medical-systems-medicationrequest-api-openapi.yml",
+    "varian-medical-systems-metadata-api-openapi.yml",
+    "varian-medical-systems-observation-api-openapi.yml",
+    "varian-medical-systems-patient-api-openapi.yml",
+    "varian-medical-systems-procedure-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
