@@ -35,7 +35,7 @@ description: >-
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: varian-medical-systems:aria-access-api
   name: ARIA Access API
