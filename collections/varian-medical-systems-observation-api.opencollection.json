@@ -1,0 +1,90 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Varian ARIA FHIR AllergyIntolerance Observation API",
+    "version": "R4-6.0.101"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://varian-smart.dynamicfhir.com/core/connect/authorize",
+      "accessTokenUrl": "https://varian-smart.dynamicfhir.com/core/connect/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Observation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Observations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://varian.dynamicfhir.com/fhir/varian/basepractice/r4/Observation",
+            "params": [
+              {
+                "name": "patient",
+                "value": "",
+                "type": "query",
+                "description": "Patient reference"
+              },
+              {
+                "name": "code",
+                "value": "",
+                "type": "query",
+                "description": "Observation LOINC or SNOMED code"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "Observation date"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "Observation category (laboratory, vital-signs, etc.)"
+              },
+              {
+                "name": "_count",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search for clinical observations including lab results, vital signs, and treatment-related measurements for oncology patients."
+        },
+        {
+          "info": {
+            "name": "Get Observation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://varian.dynamicfhir.com/fhir/varian/basepractice/r4/Observation/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific observation by ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

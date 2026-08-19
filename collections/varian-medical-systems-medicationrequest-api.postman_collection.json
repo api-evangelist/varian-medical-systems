@@ -1,0 +1,218 @@
+{
+  "item": [
+    {
+      "id": "e8bfa0c7-d5db-4c3b-ac4f-e7b70608ea55",
+      "name": "MedicationRequest",
+      "description": {
+        "content": "Chemotherapy and medication prescriptions",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e85129bd-38da-40d5-a485-b47f9481c957",
+          "name": "Search Medication Requests",
+          "request": {
+            "name": "Search Medication Requests",
+            "description": {
+              "content": "Search for medication requests (prescriptions) for oncology patients including chemotherapy orders and supportive care medications.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "MedicationRequest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "patient",
+                  "value": "<string>",
+                  "description": "(Required) Patient reference"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Medication request status"
+                },
+                {
+                  "disabled": false,
+                  "key": "_count",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/fhir+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bd341c9c-3c86-4385-86cd-74d97f0b6187",
+              "name": "Bundle of MedicationRequest resources",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "MedicationRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patient",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_count",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"Bundle\",\n  \"id\": \"string\",\n  \"meta\": {},\n  \"type\": \"collection\",\n  \"total\": 5769,\n  \"link\": [\n    {\n      \"relation\": \"string\",\n      \"url\": \"https://dxvXLQvLZmjPpEequNGwMT.kbxir2IwNiB8eSJRvx2yK07S3kFlgFMBbOQTey1TdMFYRpAjAIGPZ17yyPZV,fvwWi\"\n    },\n    {\n      \"relation\": \"string\",\n      \"url\": \"http://wdoAzIKZVyZxJdiLeyzabexFXFOxV.utbwNB,t6SRzmWiOO+cu.KeIqDJNXRGt+AB5Sgfzeq\"\n    }\n  ],\n  \"entry\": [\n    {\n      \"fullUrl\": \"https://NNQI.jezhUWCxPjH2inUJLguNDKsSo2\",\n      \"resource\": {\n        \"resourceType\": \"string\",\n        \"id\": \"string\",\n        \"meta\": {\n          \"versionId\": \"string\",\n          \"lastUpdated\": \"2016-05-27T04:45:34.599Z\"\n        },\n        \"text\": {},\n        \"key_0\": true,\n        \"key_1\": false\n      },\n      \"search\": {\n        \"mode\": \"string\"\n      }\n    },\n    {\n      \"fullUrl\": \"http://yWHcz.uyaitmLC8MIyOYCtempDDacD6bTe00Z2Emj9iboO7qMJO6t-q\",\n      \"resource\": {\n        \"resourceType\": \"string\",\n        \"id\": \"string\",\n        \"meta\": {\n          \"versionId\": \"string\",\n          \"lastUpdated\": \"1960-10-05T13:09:06.057Z\"\n        },\n        \"text\": {},\n        \"key_0\": 3506,\n        \"key_1\": 8805.091789480037,\n        \"key_2\": 5256,\n        \"key_3\": 9263.414911985139\n      },\n      \"search\": {\n        \"mode\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "866febbc-771a-4ff1-94fe-60f7efa9a073",
+              "name": "Unauthorized — missing or invalid SMART on FHIR token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "MedicationRequest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patient",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_count",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"OperationOutcome\",\n  \"issue\": [\n    {\n      \"severity\": \"fatal\",\n      \"code\": \"string\",\n      \"details\": {},\n      \"diagnostics\": \"string\"\n    },\n    {\n      \"severity\": \"information\",\n      \"code\": \"string\",\n      \"details\": {},\n      \"diagnostics\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://varian.dynamicfhir.com/fhir/varian/basepractice/r4",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "launch/patient patient/Patient.read patient/Condition.read patient/Procedure.read patient/Observation.read patient/DiagnosticReport.read patient/CarePlan.read patient/MedicationRequest.read patient/AllergyIntolerance.read patient/DocumentReference.read patient/Goal.read"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://varian-smart.dynamicfhir.com/core/connect/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://varian-smart.dynamicfhir.com/core/connect/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "abdd54fb-4e92-47af-878d-40b989e0ecaf",
+    "name": "Varian ARIA FHIR AllergyIntolerance MedicationRequest API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Varian ARIA FHIR R4 API provides SMART on FHIR access to oncology clinical data from the ARIA Oncology Information System (OIS). Enables EHR systems, clinical applications, and research tools to access patient-level oncology data including conditions, procedures, observations, care plans, medication requests, and diagnostic reports. The API is read-only and supports standard FHIR R4 search operations. Varian is a Siemens Healthineers company.\n\nContact Support:\n Name: Varian FHIR Developer Portal",
+      "type": "text/plain"
+    }
+  }
+}

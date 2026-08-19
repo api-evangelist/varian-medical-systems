@@ -1,0 +1,218 @@
+{
+  "item": [
+    {
+      "id": "aecab4de-11d7-4fd1-99e3-f97dd6a1ed47",
+      "name": "Goal",
+      "description": {
+        "content": "Treatment goals and objectives",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fbb634be-af5d-4356-9f2d-fd95b8eb72ad",
+          "name": "Search Goals",
+          "request": {
+            "name": "Search Goals",
+            "description": {
+              "content": "Search for treatment goals for oncology patients.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Goal"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "patient",
+                  "value": "<string>",
+                  "description": "(Required) Patient reference"
+                },
+                {
+                  "disabled": false,
+                  "key": "lifecycle-status",
+                  "value": "<string>",
+                  "description": "Goal lifecycle status"
+                },
+                {
+                  "disabled": false,
+                  "key": "_count",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/fhir+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ffb0d324-cb89-40a1-9415-6d4614d0753e",
+              "name": "Bundle of Goal resources",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Goal"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patient",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lifecycle-status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_count",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"Bundle\",\n  \"id\": \"string\",\n  \"meta\": {},\n  \"type\": \"collection\",\n  \"total\": 1342,\n  \"link\": [\n    {\n      \"relation\": \"string\",\n      \"url\": \"http://RtGjYGHyOkkLZisUy.wdolX+zFKxtNazFWe-7Rzf-xKLiPN9Y2flg\"\n    },\n    {\n      \"relation\": \"string\",\n      \"url\": \"http://pawWdAgivBZKdGljdvweLGeCzAQyNS.vlybDf-J3f.ARgPFpYSfMdZ6I6mt3mhQey0zWc3CMx57gwC4yZ4\"\n    }\n  ],\n  \"entry\": [\n    {\n      \"fullUrl\": \"https://lj.kbptSYa3sGEa.15FGxfS-D7M-pejZBDinmV.NMq1fk\",\n      \"resource\": {\n        \"resourceType\": \"string\",\n        \"id\": \"string\",\n        \"meta\": {\n          \"versionId\": \"string\",\n          \"lastUpdated\": \"1954-06-20T12:34:40.550Z\"\n        },\n        \"text\": {},\n        \"key_0\": \"string\"\n      },\n      \"search\": {\n        \"mode\": \"string\"\n      }\n    },\n    {\n      \"fullUrl\": \"http://ooLgLrnPQjyTpDME.iaNCdnNHvu1rud38t7+BSw7RrF2ijkTRdP-SDRYGU5ndH5S\",\n      \"resource\": {\n        \"resourceType\": \"string\",\n        \"id\": \"string\",\n        \"meta\": {\n          \"versionId\": \"string\",\n          \"lastUpdated\": \"1958-05-07T13:29:46.856Z\"\n        },\n        \"text\": {},\n        \"key_0\": \"string\"\n      },\n      \"search\": {\n        \"mode\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c797de28-c4fa-4f83-9b57-41895ea3ab56",
+              "name": "Unauthorized — missing or invalid SMART on FHIR token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Goal"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "patient",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lifecycle-status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_count",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/fhir+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/fhir+json"
+                }
+              ],
+              "body": "{\n  \"resourceType\": \"OperationOutcome\",\n  \"issue\": [\n    {\n      \"severity\": \"warning\",\n      \"code\": \"string\",\n      \"details\": {},\n      \"diagnostics\": \"string\"\n    },\n    {\n      \"severity\": \"information\",\n      \"code\": \"string\",\n      \"details\": {},\n      \"diagnostics\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://varian.dynamicfhir.com/fhir/varian/basepractice/r4",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "launch/patient patient/Patient.read patient/Condition.read patient/Procedure.read patient/Observation.read patient/DiagnosticReport.read patient/CarePlan.read patient/MedicationRequest.read patient/AllergyIntolerance.read patient/DocumentReference.read patient/Goal.read"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://varian-smart.dynamicfhir.com/core/connect/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://varian-smart.dynamicfhir.com/core/connect/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4f332d0e-e039-4504-8d49-2f2dffac0547",
+    "name": "Varian ARIA FHIR AllergyIntolerance Goal API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Varian ARIA FHIR R4 API provides SMART on FHIR access to oncology clinical data from the ARIA Oncology Information System (OIS). Enables EHR systems, clinical applications, and research tools to access patient-level oncology data including conditions, procedures, observations, care plans, medication requests, and diagnostic reports. The API is read-only and supports standard FHIR R4 search operations. Varian is a Siemens Healthineers company.\n\nContact Support:\n Name: Varian FHIR Developer Portal",
+      "type": "text/plain"
+    }
+  }
+}

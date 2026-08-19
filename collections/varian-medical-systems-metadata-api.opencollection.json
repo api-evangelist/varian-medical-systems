@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Varian ARIA FHIR AllergyIntolerance Metadata API",
+    "version": "R4-6.0.101"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://varian-smart.dynamicfhir.com/core/connect/authorize",
+      "accessTokenUrl": "https://varian-smart.dynamicfhir.com/core/connect/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Metadata",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Capability Statement",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://varian.dynamicfhir.com/fhir/varian/basepractice/r4/metadata"
+          },
+          "docs": "Returns the FHIR CapabilityStatement describing all supported resources, operations, and search parameters for this ARIA FHIR server."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

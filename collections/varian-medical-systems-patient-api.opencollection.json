@@ -1,0 +1,98 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Varian ARIA FHIR AllergyIntolerance Patient API",
+    "version": "R4-6.0.101"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://varian-smart.dynamicfhir.com/core/connect/authorize",
+      "accessTokenUrl": "https://varian-smart.dynamicfhir.com/core/connect/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Patient",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Patients",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://varian.dynamicfhir.com/fhir/varian/basepractice/r4/Patient",
+            "params": [
+              {
+                "name": "_id",
+                "value": "",
+                "type": "query",
+                "description": "Patient FHIR resource ID"
+              },
+              {
+                "name": "identifier",
+                "value": "",
+                "type": "query",
+                "description": "Patient identifier (e.g., MRN)"
+              },
+              {
+                "name": "family",
+                "value": "",
+                "type": "query",
+                "description": "Patient family (last) name"
+              },
+              {
+                "name": "given",
+                "value": "",
+                "type": "query",
+                "description": "Patient given (first) name"
+              },
+              {
+                "name": "birthdate",
+                "value": "",
+                "type": "query",
+                "description": "Patient birth date (YYYY-MM-DD)"
+              },
+              {
+                "name": "_count",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results to return"
+              }
+            ]
+          },
+          "docs": "Search for patients in the ARIA OIS by name, identifier, birth date, or other criteria."
+        },
+        {
+          "info": {
+            "name": "Get Patient",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://varian.dynamicfhir.com/fhir/varian/basepractice/r4/Patient/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "FHIR Patient resource ID"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific patient by their FHIR resource ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

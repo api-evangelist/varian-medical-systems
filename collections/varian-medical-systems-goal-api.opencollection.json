@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Varian ARIA FHIR AllergyIntolerance Goal API",
+    "version": "R4-6.0.101"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://varian-smart.dynamicfhir.com/core/connect/authorize",
+      "accessTokenUrl": "https://varian-smart.dynamicfhir.com/core/connect/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Goal",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Goals",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://varian.dynamicfhir.com/fhir/varian/basepractice/r4/Goal",
+            "params": [
+              {
+                "name": "patient",
+                "value": "",
+                "type": "query",
+                "description": "Patient reference"
+              },
+              {
+                "name": "lifecycle-status",
+                "value": "",
+                "type": "query",
+                "description": "Goal lifecycle status"
+              },
+              {
+                "name": "_count",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search for treatment goals for oncology patients."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,90 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Varian ARIA FHIR AllergyIntolerance DiagnosticReport API",
+    "version": "R4-6.0.101"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://varian-smart.dynamicfhir.com/core/connect/authorize",
+      "accessTokenUrl": "https://varian-smart.dynamicfhir.com/core/connect/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "DiagnosticReport",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Diagnostic Reports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://varian.dynamicfhir.com/fhir/varian/basepractice/r4/DiagnosticReport",
+            "params": [
+              {
+                "name": "patient",
+                "value": "",
+                "type": "query",
+                "description": "Patient reference"
+              },
+              {
+                "name": "code",
+                "value": "",
+                "type": "query",
+                "description": "Report type code"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "Report date"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Report status"
+              },
+              {
+                "name": "_count",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search for diagnostic reports associated with oncology patients, including pathology reports, imaging reports, and treatment summaries."
+        },
+        {
+          "info": {
+            "name": "Get Diagnostic Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://varian.dynamicfhir.com/fhir/varian/basepractice/r4/DiagnosticReport/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific diagnostic report by ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
