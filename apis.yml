@@ -141,6 +141,8 @@ apis:
   humanURL: https://varian.dynamicfhir.com/varian/basepractice/r4/Home/ApiDocumentation
   baseURL: https://varian.dynamicfhir.com/fhir/varian/basepractice/r4
   tags:
+  - Patients
+  tags_raw:
   - Patient
   properties:
   - type: OpenAPI
@@ -169,6 +171,8 @@ apis:
   humanURL: https://www.gatewayscripts.com/post/webinars-revisited-a-review-of-aria-apis
   baseURL: https://localhost:55051/Gateway/Service.svc
   tags:
+  - AllergyIntolerance
+  tags_raw:
   - Allergy Intolerance
   properties:
   - type: OpenAPI
@@ -183,6 +187,8 @@ apis:
   humanURL: https://www.gatewayscripts.com/post/webinars-revisited-a-review-of-aria-apis
   baseURL: https://localhost:55051/Gateway/Service.svc
   tags:
+  - CarePlan
+  tags_raw:
   - Care plan
   properties:
   - type: OpenAPI
@@ -197,6 +203,8 @@ apis:
   humanURL: https://www.gatewayscripts.com/post/webinars-revisited-a-review-of-aria-apis
   baseURL: https://localhost:55051/Gateway/Service.svc
   tags:
+  - DocumentReference
+  tags_raw:
   - Document Reference
   properties:
   - type: OpenAPI
@@ -211,6 +219,8 @@ apis:
   humanURL: https://www.gatewayscripts.com/post/webinars-revisited-a-review-of-aria-apis
   baseURL: https://localhost:55051/Gateway/Service.svc
   tags:
+  - MedicationRequest
+  tags_raw:
   - Medication Request
   properties:
   - type: OpenAPI
@@ -220,6 +230,11 @@ apis:
   - type: CapabilityStatement
     url: https://varian.dynamicfhir.com/fhir/varian/basepractice/r4/metadata
 common:
+  - type: ParentCompany
+    url: https://apis.io/providers/siemens-healthineers/
+    name: Siemens Healthineers
+    x-relationship: acquired
+    x-evidence: "https://www.varian.com now redirects to cancercare.siemens-healthineers.com; the description names no acquirer — ParentCompany records the CURRENT owner (roadmap#390, Kin 2026-09-18)"
   - type: AgenticAccess
     url: agentic-access/varian-medical-systems-agentic-access.yml
   - type: DomainSecurity
