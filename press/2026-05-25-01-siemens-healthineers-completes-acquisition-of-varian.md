@@ -1,7 +1,9 @@
 ---
 title: Siemens Healthineers completes acquisition of Varian ...
 url: https://www.siemens-healthineers.com/press/releases/varian-closing
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Varian Medical Systems" press release artificial intelligence'
 position: 1
 source: serpapi-google

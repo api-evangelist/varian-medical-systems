@@ -1,7 +1,9 @@
 ---
 title: Varian Medical Systems
 url: https://www.itnonline.com/company/varian-medical-systems-0
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Varian Medical Systems" press release artificial intelligence'
 position: 3
 source: serpapi-google

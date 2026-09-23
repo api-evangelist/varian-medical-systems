@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Varian ARIA FHIR AllergyIntolerance Condition API
+  title: Varian ARIA FHIR Condition API
   description: The Varian ARIA FHIR R4 API provides SMART on FHIR access to oncology clinical data from the ARIA Oncology Information System (OIS). Enables EHR systems, clinical applications, and research tools to access patient-level oncology data including conditions, procedures, observations, care plans, medication requests, and diagnostic reports. The API is read-only and supports standard FHIR R4 search operations. Varian is a Siemens Healthineers company.
   version: R4-6.0.101
   contact:
@@ -101,6 +101,54 @@ components:
           schema:
             $ref: '#/components/schemas/OperationOutcome'
   schemas:
+    OperationOutcome:
+      type: object
+      description: FHIR OperationOutcome for errors
+      properties:
+        resourceType:
+          type: string
+          enum:
+          - OperationOutcome
+        issue:
+          type: array
+          items:
+            type: object
+            properties:
+              severity:
+                type: string
+                enum:
+                - fatal
+                - error
+                - warning
+                - information
+              code:
+                type: string
+              details:
+                type: object
+              diagnostics:
+                type: string
+    FHIRResource:
+      type: object
+      description: Generic FHIR R4 resource
+      properties:
+        resourceType:
+          type: string
+          description: FHIR resource type
+        id:
+          type: string
+          description: Logical resource ID
+        meta:
+          type: object
+          properties:
+            versionId:
+              type: string
+            lastUpdated:
+              type: string
+              format: date-time
+        text:
+          type: object
+          description: Human-readable narrative
+      additionalProperties: true
     Bundle:
       type: object
       description: FHIR Bundle containing search results
@@ -146,54 +194,6 @@ components:
                 properties:
                   mode:
                     type: string
-    FHIRResource:
-      type: object
-      description: Generic FHIR R4 resource
-      properties:
-        resourceType:
-          type: string
-          description: FHIR resource type
-        id:
-          type: string
-          description: Logical resource ID
-        meta:
-          type: object
-          properties:
-            versionId:
-              type: string
-            lastUpdated:
-              type: string
-              format: date-time
-        text:
-          type: object
-          description: Human-readable narrative
-      additionalProperties: true
-    OperationOutcome:
-      type: object
-      description: FHIR OperationOutcome for errors
-      properties:
-        resourceType:
-          type: string
-          enum:
-          - OperationOutcome
-        issue:
-          type: array
-          items:
-            type: object
-            properties:
-              severity:
-                type: string
-                enum:
-                - fatal
-                - error
-                - warning
-                - information
-              code:
-                type: string
-              details:
-                type: object
-              diagnostics:
-                type: string
   securitySchemes:
     OAuthSMARTonFHIR:
       type: oauth2

@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Varian ARIA FHIR AllergyIntolerance Metadata API
+  title: Varian ARIA FHIR Metadata API
   description: The Varian ARIA FHIR R4 API provides SMART on FHIR access to oncology clinical data from the ARIA Oncology Information System (OIS). Enables EHR systems, clinical applications, and research tools to access patient-level oncology data including conditions, procedures, observations, care plans, medication requests, and diagnostic reports. The API is read-only and supports standard FHIR R4 search operations. Varian is a Siemens Healthineers company.
   version: R4-6.0.101
   contact:

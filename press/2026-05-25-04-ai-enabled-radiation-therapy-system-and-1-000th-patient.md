@@ -1,7 +1,9 @@
 ---
 title: AI-Enabled Radiation Therapy System & 1,000th Patient
 url: https://siteman.wustl.edu/ai-enabled-radiation-therapy-system-at-siteman/
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Varian Medical Systems" press release artificial intelligence'
 position: 4
 source: serpapi-google

@@ -1,17 +1,7 @@
 {
   "provider": "varian-medical-systems",
   "sources": [
-    "varian-medical-systems-allergyintolerance-api-openapi.yml",
-    "varian-medical-systems-careplan-api-openapi.yml",
-    "varian-medical-systems-condition-api-openapi.yml",
-    "varian-medical-systems-diagnosticreport-api-openapi.yml",
-    "varian-medical-systems-documentreference-api-openapi.yml",
-    "varian-medical-systems-goal-api-openapi.yml",
-    "varian-medical-systems-medicationrequest-api-openapi.yml",
-    "varian-medical-systems-metadata-api-openapi.yml",
-    "varian-medical-systems-observation-api-openapi.yml",
-    "varian-medical-systems-patient-api-openapi.yml",
-    "varian-medical-systems-procedure-api-openapi.yml"
+    "_original/varian-aria-fhir-openapi.yml"
   ],
   "outputs": [
     "varian-medical-systems-allergyintolerance-api-openapi.yml",
@@ -26,9 +16,28 @@
     "varian-medical-systems-patient-api-openapi.yml",
     "varian-medical-systems-procedure-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 4 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "varian-aria-fhir-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "superseded outputs removed: varian-medical-systems-allergy-intolerance-api-openapi.yml, varian-medical-systems-care-plan-api-openapi.yml, varian-medical-systems-document-reference-api-openapi.yml, varian-medical-systems-medication-request-api-openapi.yml",
+    "apis.yml register: written (+4 apis, 12 total)"
+  ],
+  "skipped": [
+    "varian-medical-systems-allergy-intolerance-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "varian-medical-systems-care-plan-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "varian-medical-systems-condition-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "varian-medical-systems-diagnosticreport-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "varian-medical-systems-document-reference-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "varian-medical-systems-goal-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "varian-medical-systems-medication-request-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "varian-medical-systems-metadata-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "varian-medical-systems-observation-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "varian-medical-systems-patient-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "varian-medical-systems-procedure-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
