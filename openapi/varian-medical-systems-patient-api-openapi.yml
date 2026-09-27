@@ -99,99 +99,6 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    OperationOutcome:
-      type: object
-      description: FHIR OperationOutcome for errors
-      properties:
-        resourceType:
-          type: string
-          enum:
-          - OperationOutcome
-        issue:
-          type: array
-          items:
-            type: object
-            properties:
-              severity:
-                type: string
-                enum:
-                - fatal
-                - error
-                - warning
-                - information
-              code:
-                type: string
-              details:
-                type: object
-              diagnostics:
-                type: string
-    Patient:
-      allOf:
-      - $ref: '#/components/schemas/FHIRResource'
-      description: FHIR R4 Patient resource for oncology patients
-      properties:
-        resourceType:
-          type: string
-          enum:
-          - Patient
-        identifier:
-          type: array
-          items:
-            type: object
-            properties:
-              system:
-                type: string
-              value:
-                type: string
-        name:
-          type: array
-          items:
-            type: object
-            properties:
-              use:
-                type: string
-              family:
-                type: string
-              given:
-                type: array
-                items:
-                  type: string
-        birthDate:
-          type: string
-          format: date
-        gender:
-          type: string
-          enum:
-          - male
-          - female
-          - other
-          - unknown
-        address:
-          type: array
-          items:
-            type: object
-    FHIRResource:
-      type: object
-      description: Generic FHIR R4 resource
-      properties:
-        resourceType:
-          type: string
-          description: FHIR resource type
-        id:
-          type: string
-          description: Logical resource ID
-        meta:
-          type: object
-          properties:
-            versionId:
-              type: string
-            lastUpdated:
-              type: string
-              format: date-time
-        text:
-          type: object
-          description: Human-readable narrative
-      additionalProperties: true
     Bundle:
       type: object
       description: FHIR Bundle containing search results
@@ -237,6 +144,99 @@ components:
                 properties:
                   mode:
                     type: string
+    OperationOutcome:
+      type: object
+      description: FHIR OperationOutcome for errors
+      properties:
+        resourceType:
+          type: string
+          enum:
+          - OperationOutcome
+        issue:
+          type: array
+          items:
+            type: object
+            properties:
+              severity:
+                type: string
+                enum:
+                - fatal
+                - error
+                - warning
+                - information
+              code:
+                type: string
+              details:
+                type: object
+              diagnostics:
+                type: string
+    FHIRResource:
+      type: object
+      description: Generic FHIR R4 resource
+      properties:
+        resourceType:
+          type: string
+          description: FHIR resource type
+        id:
+          type: string
+          description: Logical resource ID
+        meta:
+          type: object
+          properties:
+            versionId:
+              type: string
+            lastUpdated:
+              type: string
+              format: date-time
+        text:
+          type: object
+          description: Human-readable narrative
+      additionalProperties: true
+    Patient:
+      allOf:
+      - $ref: '#/components/schemas/FHIRResource'
+      description: FHIR R4 Patient resource for oncology patients
+      properties:
+        resourceType:
+          type: string
+          enum:
+          - Patient
+        identifier:
+          type: array
+          items:
+            type: object
+            properties:
+              system:
+                type: string
+              value:
+                type: string
+        name:
+          type: array
+          items:
+            type: object
+            properties:
+              use:
+                type: string
+              family:
+                type: string
+              given:
+                type: array
+                items:
+                  type: string
+        birthDate:
+          type: string
+          format: date
+        gender:
+          type: string
+          enum:
+          - male
+          - female
+          - other
+          - unknown
+        address:
+          type: array
+          items:
+            type: object
   responses:
     NotFound:
       description: Resource not found

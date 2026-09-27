@@ -100,20 +100,52 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/fhir+json:
-          schema:
-            $ref: '#/components/schemas/OperationOutcome'
-    Unauthorized:
-      description: Unauthorized — missing or invalid SMART on FHIR token
-      content:
-        application/fhir+json:
-          schema:
-            $ref: '#/components/schemas/OperationOutcome'
   schemas:
+    Bundle:
+      type: object
+      description: FHIR Bundle containing search results
+      properties:
+        resourceType:
+          type: string
+          enum:
+          - Bundle
+        id:
+          type: string
+        meta:
+          type: object
+        type:
+          type: string
+          enum:
+          - searchset
+          - collection
+        total:
+          type: integer
+          description: Total number of matching resources
+        link:
+          type: array
+          items:
+            type: object
+            properties:
+              relation:
+                type: string
+              url:
+                type: string
+                format: uri
+        entry:
+          type: array
+          items:
+            type: object
+            properties:
+              fullUrl:
+                type: string
+                format: uri
+              resource:
+                $ref: '#/components/schemas/FHIRResource'
+              search:
+                type: object
+                properties:
+                  mode:
+                    type: string
     OperationOutcome:
       type: object
       description: FHIR OperationOutcome for errors
@@ -162,51 +194,19 @@ components:
           type: object
           description: Human-readable narrative
       additionalProperties: true
-    Bundle:
-      type: object
-      description: FHIR Bundle containing search results
-      properties:
-        resourceType:
-          type: string
-          enum:
-          - Bundle
-        id:
-          type: string
-        meta:
-          type: object
-        type:
-          type: string
-          enum:
-          - searchset
-          - collection
-        total:
-          type: integer
-          description: Total number of matching resources
-        link:
-          type: array
-          items:
-            type: object
-            properties:
-              relation:
-                type: string
-              url:
-                type: string
-                format: uri
-        entry:
-          type: array
-          items:
-            type: object
-            properties:
-              fullUrl:
-                type: string
-                format: uri
-              resource:
-                $ref: '#/components/schemas/FHIRResource'
-              search:
-                type: object
-                properties:
-                  mode:
-                    type: string
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
+    Unauthorized:
+      description: Unauthorized — missing or invalid SMART on FHIR token
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
   securitySchemes:
     OAuthSMARTonFHIR:
       type: oauth2

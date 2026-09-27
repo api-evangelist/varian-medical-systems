@@ -52,55 +52,14 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    Unauthorized:
+      description: Unauthorized — missing or invalid SMART on FHIR token
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
   schemas:
-    FHIRResource:
-      type: object
-      description: Generic FHIR R4 resource
-      properties:
-        resourceType:
-          type: string
-          description: FHIR resource type
-        id:
-          type: string
-          description: Logical resource ID
-        meta:
-          type: object
-          properties:
-            versionId:
-              type: string
-            lastUpdated:
-              type: string
-              format: date-time
-        text:
-          type: object
-          description: Human-readable narrative
-      additionalProperties: true
-    OperationOutcome:
-      type: object
-      description: FHIR OperationOutcome for errors
-      properties:
-        resourceType:
-          type: string
-          enum:
-          - OperationOutcome
-        issue:
-          type: array
-          items:
-            type: object
-            properties:
-              severity:
-                type: string
-                enum:
-                - fatal
-                - error
-                - warning
-                - information
-              code:
-                type: string
-              details:
-                type: object
-              diagnostics:
-                type: string
     Bundle:
       type: object
       description: FHIR Bundle containing search results
@@ -146,13 +105,54 @@ components:
                 properties:
                   mode:
                     type: string
-  responses:
-    Unauthorized:
-      description: Unauthorized — missing or invalid SMART on FHIR token
-      content:
-        application/fhir+json:
-          schema:
-            $ref: '#/components/schemas/OperationOutcome'
+    OperationOutcome:
+      type: object
+      description: FHIR OperationOutcome for errors
+      properties:
+        resourceType:
+          type: string
+          enum:
+          - OperationOutcome
+        issue:
+          type: array
+          items:
+            type: object
+            properties:
+              severity:
+                type: string
+                enum:
+                - fatal
+                - error
+                - warning
+                - information
+              code:
+                type: string
+              details:
+                type: object
+              diagnostics:
+                type: string
+    FHIRResource:
+      type: object
+      description: Generic FHIR R4 resource
+      properties:
+        resourceType:
+          type: string
+          description: FHIR resource type
+        id:
+          type: string
+          description: Logical resource ID
+        meta:
+          type: object
+          properties:
+            versionId:
+              type: string
+            lastUpdated:
+              type: string
+              format: date-time
+        text:
+          type: object
+          description: Human-readable narrative
+      additionalProperties: true
   securitySchemes:
     OAuthSMARTonFHIR:
       type: oauth2
