@@ -52,14 +52,33 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    Unauthorized:
-      description: Unauthorized — missing or invalid SMART on FHIR token
-      content:
-        application/fhir+json:
-          schema:
-            $ref: '#/components/schemas/OperationOutcome'
   schemas:
+    OperationOutcome:
+      type: object
+      description: FHIR OperationOutcome for errors
+      properties:
+        resourceType:
+          type: string
+          enum:
+          - OperationOutcome
+        issue:
+          type: array
+          items:
+            type: object
+            properties:
+              severity:
+                type: string
+                enum:
+                - fatal
+                - error
+                - warning
+                - information
+              code:
+                type: string
+              details:
+                type: object
+              diagnostics:
+                type: string
     Bundle:
       type: object
       description: FHIR Bundle containing search results
@@ -105,32 +124,6 @@ components:
                 properties:
                   mode:
                     type: string
-    OperationOutcome:
-      type: object
-      description: FHIR OperationOutcome for errors
-      properties:
-        resourceType:
-          type: string
-          enum:
-          - OperationOutcome
-        issue:
-          type: array
-          items:
-            type: object
-            properties:
-              severity:
-                type: string
-                enum:
-                - fatal
-                - error
-                - warning
-                - information
-              code:
-                type: string
-              details:
-                type: object
-              diagnostics:
-                type: string
     FHIRResource:
       type: object
       description: Generic FHIR R4 resource
@@ -153,6 +146,13 @@ components:
           type: object
           description: Human-readable narrative
       additionalProperties: true
+  responses:
+    Unauthorized:
+      description: Unauthorized — missing or invalid SMART on FHIR token
+      content:
+        application/fhir+json:
+          schema:
+            $ref: '#/components/schemas/OperationOutcome'
   securitySchemes:
     OAuthSMARTonFHIR:
       type: oauth2
