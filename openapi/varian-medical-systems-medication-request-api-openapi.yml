@@ -58,6 +58,28 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    FHIRResource:
+      type: object
+      description: Generic FHIR R4 resource
+      properties:
+        resourceType:
+          type: string
+          description: FHIR resource type
+        id:
+          type: string
+          description: Logical resource ID
+        meta:
+          type: object
+          properties:
+            versionId:
+              type: string
+            lastUpdated:
+              type: string
+              format: date-time
+        text:
+          type: object
+          description: Human-readable narrative
+      additionalProperties: true
     OperationOutcome:
       type: object
       description: FHIR OperationOutcome for errors
@@ -129,28 +151,6 @@ components:
                 properties:
                   mode:
                     type: string
-    FHIRResource:
-      type: object
-      description: Generic FHIR R4 resource
-      properties:
-        resourceType:
-          type: string
-          description: FHIR resource type
-        id:
-          type: string
-          description: Logical resource ID
-        meta:
-          type: object
-          properties:
-            versionId:
-              type: string
-            lastUpdated:
-              type: string
-              format: date-time
-        text:
-          type: object
-          description: Human-readable narrative
-      additionalProperties: true
   responses:
     Unauthorized:
       description: Unauthorized — missing or invalid SMART on FHIR token
