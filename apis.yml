@@ -171,6 +171,8 @@ apis:
   humanURL: https://www.gatewayscripts.com/post/webinars-revisited-a-review-of-aria-apis
   baseURL: https://localhost:55051/Gateway/Service.svc
   tags:
+  - AllergyIntolerance
+  tags_raw:
   - Allergy Intolerance
   properties:
   - type: OpenAPI
@@ -185,6 +187,8 @@ apis:
   humanURL: https://www.gatewayscripts.com/post/webinars-revisited-a-review-of-aria-apis
   baseURL: https://localhost:55051/Gateway/Service.svc
   tags:
+  - CarePlan
+  tags_raw:
   - Care plan
   properties:
   - type: OpenAPI
@@ -199,6 +203,8 @@ apis:
   humanURL: https://www.gatewayscripts.com/post/webinars-revisited-a-review-of-aria-apis
   baseURL: https://localhost:55051/Gateway/Service.svc
   tags:
+  - DocumentReference
+  tags_raw:
   - Document Reference
   properties:
   - type: OpenAPI
@@ -213,6 +219,8 @@ apis:
   humanURL: https://www.gatewayscripts.com/post/webinars-revisited-a-review-of-aria-apis
   baseURL: https://localhost:55051/Gateway/Service.svc
   tags:
+  - MedicationRequest
+  tags_raw:
   - Medication Request
   properties:
   - type: OpenAPI
