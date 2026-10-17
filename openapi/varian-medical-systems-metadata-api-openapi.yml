@@ -41,6 +41,28 @@ paths:
                 $ref: '#/components/schemas/CapabilityStatement'
 components:
   schemas:
+    FHIRResource:
+      type: object
+      description: Generic FHIR R4 resource
+      properties:
+        resourceType:
+          type: string
+          description: FHIR resource type
+        id:
+          type: string
+          description: Logical resource ID
+        meta:
+          type: object
+          properties:
+            versionId:
+              type: string
+            lastUpdated:
+              type: string
+              format: date-time
+        text:
+          type: object
+          description: Human-readable narrative
+      additionalProperties: true
     CapabilityStatement:
       allOf:
       - $ref: '#/components/schemas/FHIRResource'
@@ -65,28 +87,6 @@ components:
           type: array
           items:
             type: object
-    FHIRResource:
-      type: object
-      description: Generic FHIR R4 resource
-      properties:
-        resourceType:
-          type: string
-          description: FHIR resource type
-        id:
-          type: string
-          description: Logical resource ID
-        meta:
-          type: object
-          properties:
-            versionId:
-              type: string
-            lastUpdated:
-              type: string
-              format: date-time
-        text:
-          type: object
-          description: Human-readable narrative
-      additionalProperties: true
   securitySchemes:
     OAuthSMARTonFHIR:
       type: oauth2
