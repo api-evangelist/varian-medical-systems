@@ -195,3 +195,40 @@
     identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
   status: not-a-workflow
   arazzo: null
+- slug: varian-medical-systems-clinicaltrials-gov-industry-trial-sponsors-and-collaborators
+  label: ClinicalTrials.gov (industry trial sponsors and collaborators)
+  partner_name: ClinicalTrials.gov (industry trial sponsors and collaborators)
+  category: Interventional trial sponsor / collaborator
+  type: register
+  channel: standard-directory
+  evidence: https://clinicaltrials.gov/study/NCT06077071
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: ClinicalTrials.gov API v2 (interventional, started >= 2021-01-01, industry lead sponsor or collaborator)
+    standard: null
+    spec_file: null
+    role: trial-collaborator
+    registered_name: Varian Medical Systems
+    matched_domain: null
+    matched_by: register-name
+    lead_sponsor: false
+    active_trial: true
+    latest_start: '2026-09-01'
+    trials_sample:
+    - NCT06077071
+    - NCT07276360
+    - NCT07221058
+    - NCT06995053
+    - NCT06111313
+    signal_note: 'PARTICIPATION only (a trial is not an approval): lead_sponsor, active_trial and latest_start are
+      per-edge signals; the number of trials is never counted'
+    detected_by: sweep-clinical-trial-sponsors.py
+    detected: '2026-10-21'
+    register_name_note: register-name 'varianmedicalsystems' = varian-medical-systems; wikidata P856 varian.com
+      agrees or unheld
+    identity_source: register-name
+    identity_note: register gave only the name; exact normalised match to the repo's apis.yml name, one repo, Wikidata
+      P856 not contradicting (Kin 2026-10-20 decision 2)
+  status: not-a-workflow
+  arazzo: null
