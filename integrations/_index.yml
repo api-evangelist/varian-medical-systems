@@ -128,3 +128,70 @@
     identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
   status: not-a-workflow
   arazzo: null
+- slug: varian-medical-systems-fda-510-k-premarket-notifications-ivd-surgical-panels
+  label: FDA 510(k) premarket notifications (IVD / surgical panels)
+  partner_name: FDA 510(k) premarket notifications (IVD / surgical panels)
+  category: FDA-cleared IVD / surgical device
+  type: contract
+  channel: regulator-register
+  evidence: https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpmn/pmn.cfm?ID=K240480
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: openFDA device/510k (decision_date >= 2016-01-01; panels CH HE IM MI PA TX SU OR)
+    standard: FDA 510(k) premarket clearance (IVD / surgical panels)
+    spec_file: null
+    role: fda-510k-holder
+    registered_name: Varian Medical Systems, Inc.
+    matched_domain: varian.com
+    matched_by: domain
+    detected_by: sweep-ivd-diagnostics.py
+    detected: '2026-10-21'
+    register_id: K240480
+    certified_products:
+    - product: FDA 510(k) clearance, General & Plastic Surgery panel
+      product_type: General & Plastic Surgery
+      review_panel: SU
+      lapsed: false
+      latest_decision: '2024-07-19'
+      devices_sample:
+      - CRYOCARE TOUCH System and Accessories, Endocare 1.7mm Round Ice PerCryo Cryoprobe, Short, Round Ice
+      - ISOLIS Cryoprobe
+      - IntelliBlate Microwave Ablation System Console (IB-CON); IntelliBlate Microwave Ablation System Mobile Cart
+        (IB-CART); IntelliBlate Ximitry Probe Assembly, 13G x 15cm (IB-XPA-1315); IntelliBlate Ximitry Probe Assembly,
+        13G x 20cm (IB-XPA-1320); IntelliBlate Ximitry Probe Assembly, 13G x 27cm (IB-XPA-1327)
+      - Temperature Sensor Probe  (ABL-18TP20)
+      - Urethral Warming Catheter Kit
+    signal_note: certified_products = one entry per FDA review PANEL held, never per device; openFDA carries decisions,
+      not withdrawals, so lapsed is always false
+    identity: wikidata Q4993917 'Varian Medical Systems' P856 http://www.varian.com/
+    identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
+  status: not-a-workflow
+  arazzo: null
+- slug: varian-medical-systems-fda-establishment-registration-and-device-listing-ivd-surgical-specialties
+  label: FDA establishment registration and device listing (IVD / surgical specialties)
+  partner_name: FDA establishment registration and device listing (IVD / surgical specialties)
+  category: FDA-registered device establishment
+  type: contract
+  channel: regulator-register
+  evidence: https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfRL/rl.cfm
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: openFDA device/registrationlisting (owner/operator, device listings by medical specialty)
+    standard: FDA establishment registration and device listing (21 CFR 807)
+    spec_file: null
+    role: fda-registered-owner-operator
+    registered_name: Varian Medical Systems, Inc
+    matched_domain: varian.com
+    matched_by: domain
+    detected_by: sweep-ivd-diagnostics.py
+    detected: '2026-10-21'
+    listed_specialties:
+    - General & Plastic Surgery
+    signal_note: 'REGULATED through the establishment registration: a registration is not a clearance, so no certified_products;
+      specialties are context, never counted'
+    identity: wikidata Q4993917 'Varian Medical Systems' P856 http://www.varian.com/
+    identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
+  status: not-a-workflow
+  arazzo: null
